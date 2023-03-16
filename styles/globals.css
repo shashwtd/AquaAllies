@@ -4,23 +4,25 @@
   margin: 0;
 }
 
-body, html {
+body {
   width: 100vw;
   height: auto;
   min-height: 100%;
+  overflow-x: hidden;
 }
 
 :root {
-  --primary: #1e1e1e;
-  --secondary: #26292d;
-  --text: #ffffff; 
+  --primary: #000000;
+  --secondary: #e3e3e7;
+  --text: #b6bfb6; 
 }
 
 main {
   width: 100vw;
-  min-height: 100vw; 
+  min-height: 100vh; 
   height: auto;
   background-color: var(--primary);
+  scroll-behavior: smooth;
 }
 
 
@@ -31,17 +33,7 @@ main {
 
 
 
-
-
-
-
-
-
-
-
-
-
-// Miscelaneous
+/*  <===== Miscelaneous =====>  */
 
 ::-webkit-scrollbar {
   display: none;
@@ -52,8 +44,7 @@ main {
   src: url('/assets/fonts/sharlee.woff2');
 }
 
-
-// Noise effect
+/* <===== Noise Effect =====> */
 
 @-webkit-keyframes grain {
 
@@ -145,7 +136,7 @@ main {
 
 .noise {
   position: fixed;
-  z-index: 97;
+  z-index: 150;
   top: -300%;
   left: -150%;
   height: 600%;
