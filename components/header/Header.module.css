@@ -1,5 +1,99 @@
 .header {
+    position: fixed;
     width: 100vw;
-    height: 4em;
-    background-color: black;
+    height: 6em;
+    top: 0;
+    z-index: 10;
+
+    background-color: var(--secondary);
+    color: var(--text);
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.2s ease-out;
+    padding: 0 4em;
+}
+
+.header::after {
+    /* content: ""; */
+    position: absolute;
+    bottom: 0;
+    left: 2em;
+    width: calc(100% - 4em);
+    height: 2px;
+    background-color: var(--text);
+    border-radius: 4px;
+    opacity: 0.1;
+    transition: 0.2s ease-out;
+}
+
+.header[active] {
+    height: 5em;
+}
+
+.header[active]::after {
+    opacity: 0.2;
+}
+
+.headerTitle {
+    font-size: 1.6em;
+    font-weight: 700;
+    opacity: .7;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+}
+
+.headerTitle:hover {
+    background-color: #2221;
+}
+
+.options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.8em;
+}
+
+.options span {
+    font-size: 1.1em;
+    font-weight: 600;
+    opacity: .7;
+    text-transform: lowercase;
+    cursor: pointer;
+    transition: 0.2s ease-out;
+    padding: 0.2em 0.4em;
+    border-radius: 10px;
+}
+
+.options span:hover {
+    opacity: .9;
+    background-color: #2221;
+}
+
+.action .actionButton {
+    border-radius: 40px;
+    padding: .4em 1em;
+    font-size: 1em;
+    font-weight: 700;
+    cursor: pointer;
+    border: 2px solid var(--text);
+    opacity: .6;
+    transition: 0.2s ease-out;
+}
+
+.action .actionButton span {
+    display: inline-block;
+    transition: 0.2s ease-out;
+    margin: 0 0.2em 0 0.6em;
+    line-height: 1;
+    transform: translateY(1px);
+}
+
+.action .actionButton:hover span {
+    transform: translate(5px, 1px);
+}
+
+.action .actionButton:hover {
+    background: #2221;
 }

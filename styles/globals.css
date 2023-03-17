@@ -9,23 +9,24 @@ body {
   height: auto;
   min-height: 100%;
   overflow-x: hidden;
+  font-family: 'sharlee';
+  font-size: 14px !important;
 }
 
 :root {
   --primary: #000000;
   --secondary: #e3e3e7;
-  --text: #b6bfb6; 
+  --text: #151515; 
 }
 
 main {
   width: 100vw;
   min-height: 100vh; 
   height: auto;
-  background-color: var(--primary);
+  background-color: var(--secondary);
   scroll-behavior: smooth;
+  user-select: none;
 }
-
-
 
 
 
@@ -39,9 +40,42 @@ main {
   display: none;
 }
 
+.scrollBar {
+    width: 8px;
+    height: 100vh;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: var(--secondary);
+    filter: brightness(0.85);
+    z-index: 169;
+    --scroll: 0%;
+}
+
+.scrollBar::after {
+    content: '';
+    position: absolute;
+    background-color: var(--secondary);
+    top: 0;
+    left: 0;
+    filter: brightness(0.55);
+    width: 100%;
+    height: var(--scroll);
+}
+
 @font-face {
   font-family: 'sharlee';
-  src: url('/assets/fonts/sharlee.woff2');
+  src: url('/fonts/sharlee.woff2');
+}
+
+@font-face {
+    font-family: 'HK';
+    src: url('/fonts/HKGrotesk-Medium.woff2');
+}
+
+@font-face {
+    font-family: 'HK_wide';
+    src: url('/fonts/HKGroteskWide-SemiBold.otf');
 }
 
 /* <===== Noise Effect =====> */
@@ -136,16 +170,16 @@ main {
 
 .noise {
   position: fixed;
-  z-index: 150;
+  z-index: 170;
   top: -300%;
   left: -150%;
   height: 600%;
   width: 600%;
   -webkit-animation: grain 7s steps(10) infinite;
   animation: grain 7s steps(10) infinite;
-  background-image: url(/res/noise.png);
+  background-image: url(/assets/noise.png);
   background-size: 200px;
   background-repeat: repeat;
-  opacity: 0.1;
+  opacity: 0.2;
   pointer-events: none
 }
