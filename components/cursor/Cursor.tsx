@@ -7,7 +7,6 @@ import styles from './Cursor.module.css';
 
 
 
-
 const Cursor = () => {
   const [mouse, setMouse] = useState({ x: -100, y: -100 });
   const [pos, setPos] = useState({ x: 0, y: 0 });
