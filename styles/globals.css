@@ -11,6 +11,7 @@ body {
   overflow-x: hidden;
   font-family: 'sharlee';
   font-size: 14px !important;
+  user-select: none;
 }
 
 :root {
@@ -25,7 +26,6 @@ main {
   height: auto;
   background-color: var(--secondary);
   scroll-behavior: smooth;
-  user-select: none;
 }
 
 
@@ -46,8 +46,6 @@ main {
     position: fixed;
     left: 0;
     top: 0;
-    background-color: var(--secondary);
-    filter: brightness(0.85);
     z-index: 169;
     --scroll: 0%;
 }
@@ -55,12 +53,24 @@ main {
 .scrollBar::after {
     content: '';
     position: absolute;
-    background-color: var(--secondary);
+    background-color: #76bbc4;
     top: 0;
-    left: 0;
-    filter: brightness(0.55);
-    width: 100%;
+    right: 0;
+    width: 8px;
     height: var(--scroll);
+    z-index: 2;
+}
+
+.scrollBar::before {
+    content: '';
+    position: absolute;
+    background-color: #76bbc4;
+    top: 0;
+    right: 0;
+    width: 8px;
+    height: 100%;
+    z-index: 1;
+    opacity: 0.2;
 }
 
 @font-face {
