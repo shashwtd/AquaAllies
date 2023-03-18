@@ -43,11 +43,11 @@
 }
 
 .landing .title span {
+	width: fit-content;
 	line-height: 1;
 	font-size: 7em;
 	font-family: 'HK_wide';
 	text-transform: uppercase;
-	text-align: left;
 	opacity: 0.9;
 	margin-top: .2em;
 }

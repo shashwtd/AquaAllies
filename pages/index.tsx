@@ -11,9 +11,9 @@ function HomePage() {
 			<main>
 				<div className={styles.page}>
 					<div className={styles.landing}>
-						<div className={styles.title} cursor-class='arrow'>
-							<span>Worldwide</span>
-							<span>Clean Oceans</span>
+						<div className={styles.title}>
+							<span cursor-class='grow'>Worldwide</span>
+							<span cursor-class='grow'>Clean Oceans</span>
 						</div>
 					</div>
 				</div>
