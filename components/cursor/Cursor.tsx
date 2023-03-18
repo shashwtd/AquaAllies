@@ -3,8 +3,8 @@ import styles from './Cursor.module.css'
 
 const Cursor = () => {
   React.useEffect(() => {
-    const cursor = document.querySelector('#cursor');
-    const cursorCircle = document.querySelector('#cursorCircle');
+    const cursor = document.querySelector('#cursor') as HTMLElement;
+    const cursorCircle = document.querySelector('#cursorCircle') as HTMLElement;
 
     const mouse = { x: -100, y: -100 }; // mouse pointer's coordinates
     const pos = { x: 0, y: 0 }; // cursor's coordinates
@@ -60,13 +60,16 @@ const Cursor = () => {
 
     const cursorModifiers = document.querySelectorAll('[cursor-class]');
 
+    // Foreach cursor modifier, without arrow function
+    
+
     cursorModifiers.forEach(curosrModifier => {
-      curosrModifier.addEventListener('mouseenter', function() {
+      curosrModifier.addEventListener('mouseenter', function(this: any) {
         const className = this.getAttribute('cursor-class');
         cursor.setAttribute('state', className);
       });
       
-      curosrModifier.addEventListener('mouseleave', function() {
+      curosrModifier.addEventListener('mouseleave', function(this: any) {
         const className = this.getAttribute('cursor-class');
         cursor.setAttribute('state', '');
       });
