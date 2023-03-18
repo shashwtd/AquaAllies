@@ -1,69 +1,83 @@
-import { useEffect, useState } from 'react';
-import styles from './Cursor.module.css';
-
-
-// TODO: Add cursor class to elements to change cursor
-// Source: https://codepen.io/gabrielcojea/pen/jOWRBrL?editors=0010
-
-
+import React, { useEffect } from 'react';
+import styles from './Cursor.module.css'
 
 const Cursor = () => {
-  const [mouse, setMouse] = useState({ x: -100, y: -100 });
-  const [pos, setPos] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [isClicked, setIsClicked] = useState(false);
+  React.useEffect(() => {
+    const cursor = document.querySelector('#cursor');
+    const cursorCircle = document.querySelector('#cursorCircle');
 
-  const updateMouse = (e: { clientX: any; clientY: any; }) => {
-    setMouse({ x: e.clientX, y: e.clientY });
-  };
+    const mouse = { x: -100, y: -100 }; // mouse pointer's coordinates
+    const pos = { x: 0, y: 0 }; // cursor's coordinates
+    const speed = 0.1; // between 0 and 1
 
-  useEffect(() => {
-    window.addEventListener('mousemove', updateMouse);
-    return () => window.removeEventListener('mousemove', updateMouse);
+    const updateCoordinates = (e: { clientX: number; clientY: number; }) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    }
+
+    window.addEventListener('mousemove', updateCoordinates);
+
+
+    function getAngle(diffX: number, diffY: number) {
+      return Math.atan2(diffY, diffX) * 180 / Math.PI;
+    }
+
+    function getSqueeze(diffX: number, diffY: number) {
+      const distance = Math.sqrt(
+        Math.pow(diffX, 2) + Math.pow(diffY, 2)
+      );
+      const maxSqueeze = 0.15;
+      const accelerator = 1500;
+      return Math.min(distance / accelerator, maxSqueeze);
+    }
+
+
+    const updateCursor = () => {
+      const diffX = Math.round(mouse.x - pos.x);
+      const diffY = Math.round(mouse.y - pos.y);
+      
+      pos.x += diffX * speed;
+      pos.y += diffY * speed;
+      
+      const angle = getAngle(diffX, diffY);
+      const squeeze = getSqueeze(diffX, diffY);
+      
+      const scale = 'scale(' + (1 + squeeze) + ', ' + (1 - squeeze) +')';
+      const rotate = 'rotate(' + angle +'deg)';
+      const translate = 'translate3d(' + pos.x + 'px ,' + pos.y + 'px, 0)';
+
+      cursor.style.transform = translate;
+      cursorCircle.style.transform = rotate + scale;
+    };
+
+    function loop() {
+      updateCursor();
+      requestAnimationFrame(loop);
+    }
+
+    requestAnimationFrame(loop);
+
+
+    const cursorModifiers = document.querySelectorAll('[cursor-class]');
+
+    cursorModifiers.forEach(curosrModifier => {
+      curosrModifier.addEventListener('mouseenter', function() {
+        const className = this.getAttribute('cursor-class');
+        cursor.setAttribute('state', className);
+      });
+      
+      curosrModifier.addEventListener('mouseleave', function() {
+        const className = this.getAttribute('cursor-class');
+        cursor.setAttribute('state', '');
+      });
+    });
   }, []);
 
-  const updatePos = () => {
-    const diffX = Math.round(mouse.x - pos.x);
-    const diffY = Math.round(mouse.y - pos.y);
-
-    setPos({
-      x: pos.x + diffX * 0.1,
-      y: pos.y + diffY * 0.1,
-    });
-  };
-
-  useEffect(() => {
-    requestAnimationFrame(updatePos);
-  }, [mouse, pos]);
-
-  const handleHover = () => {
-    setIsHovering(true);
-  };
-
-  const handleLeave = () => {
-    setIsHovering(false);
-  };
-
-  const handleClick = () => {
-    setIsClicked(true);
-
-    setTimeout(() => {
-      setIsClicked(false);
-    }, 150);
-  };
-
   return (
-    <div className={styles.cursor} style={{ transform: `translate3d(${pos.x}px, ${pos.y}px, 0)` }}>
-      <div
-        className={`${styles.cursor__circle} ${isHovering ? '--hover' : ''} ${
-          isClicked ? '--click' : ''
-        }`}
-        onMouseEnter={handleHover}
-        onMouseLeave={handleLeave}
-        onMouseDown={handleClick}
-      />
+    <div className={styles.cursor} id="cursor">
+      <div className={styles.cursorCircle} id="cursorCircle"></div>
     </div>
-  );
-};
+  )
+}
 
 export default Cursor;
