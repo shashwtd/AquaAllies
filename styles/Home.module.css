@@ -26,7 +26,6 @@
 	word-wrap: break-word;
 	display: flex;
 	flex-direction: column;
-	transform: translateX(-1em);
 	position: relative;
 }
 
@@ -50,4 +49,8 @@
 	text-transform: uppercase;
 	opacity: 0.9;
 	margin-top: .2em;
+}
+
+.page {
+	/* border-bottom: 1px solid red; */
 }

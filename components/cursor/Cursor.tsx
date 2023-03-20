@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './Cursor.module.css'
 
 const Cursor = () => {
+  const [isClicked, setIsClicked] = useState(false);
   React.useEffect(() => {
     const cursor = document.querySelector('#cursor') as HTMLElement;
     const cursorCircle = document.querySelector('#cursorCircle') as HTMLElement;
 
     const mouse = { x: -100, y: -100 }; // mouse pointer's coordinates
     const pos = { x: 0, y: 0 }; // cursor's coordinates
-    const speed = 0.1; // between 0 and 1
+    const speed = 0.08; // between 0 and 1
 
     const updateCoordinates = (e: { clientX: number; clientY: number; }) => {
       mouse.x = e.clientX;
@@ -16,7 +17,8 @@ const Cursor = () => {
     }
 
     window.addEventListener('mousemove', updateCoordinates);
-
+    window.addEventListener('mousedown', () => setIsClicked(true));
+    window.addEventListener('mouseup', () => setIsClicked(false));
 
     function getAngle(diffX: number, diffY: number) {
       return Math.atan2(diffY, diffX) * 180 / Math.PI;
@@ -47,7 +49,13 @@ const Cursor = () => {
       const translate = 'translate3d(' + pos.x + 'px ,' + pos.y + 'px, 0)';
 
       cursor.style.transform = translate;
-      cursorCircle.style.transform = rotate + scale;
+
+      if (isClicked) {
+        cursorCircle.style.transform = rotate + scale + ' scale(0.5)';
+      } else {
+        cursorCircle.style.transform = rotate + scale;
+      }
+
     };
 
     function loop() {
@@ -59,10 +67,6 @@ const Cursor = () => {
 
 
     const cursorModifiers = document.querySelectorAll('[cursor-class]');
-
-    // Foreach cursor modifier, without arrow function
-    
-
     cursorModifiers.forEach(curosrModifier => {
       curosrModifier.addEventListener('mouseenter', function(this: any) {
         const className = this.getAttribute('cursor-class');
