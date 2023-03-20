@@ -59,4 +59,8 @@
 	  background-color: rgba(227, 222, 193, 0.08);
 	  border-color: transparent;
 	}
+
+	.cursor[state='hide'] .cursorCircle{
+	  opacity: 0;
+	}
   }
