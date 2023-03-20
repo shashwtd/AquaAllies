@@ -19,6 +19,9 @@ const Cursor = () => {
     window.addEventListener('mousemove', updateCoordinates);
     window.addEventListener('mousedown', () => setIsClicked(true));
     window.addEventListener('mouseup', () => setIsClicked(false));
+    
+    window.addEventListener('mouseout', () => { cursor.setAttribute('state', 'hide'); });
+    window.addEventListener('mouseover', () => { cursor.setAttribute('state', ''); });
 
     function getAngle(diffX: number, diffY: number) {
       return Math.atan2(diffY, diffX) * 180 / Math.PI;
@@ -78,7 +81,7 @@ const Cursor = () => {
         cursor.setAttribute('state', '');
       });
     });
-  }, []);
+  }, [isClicked]);
 
   return (
     <div className={styles.cursor} id="cursor">
