@@ -16,8 +16,11 @@ body {
 
 :root {
   --primary: #000000;
-  --secondary: #e3e3e7;
+  --secondary: #e3e4e7;
   --text: #151515; 
+  --bluish: #494c4d;
+
+  --hh: 6em;
 }
 
 main {
@@ -26,6 +29,12 @@ main {
   height: auto;
   background-color: var(--secondary);
   scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+    color: var(--bluish);
+    font-weight: 600;
 }
 
 
@@ -44,7 +53,7 @@ main {
     width: 8px;
     height: 100vh;
     position: fixed;
-    left: 0;
+    right: 0;
     top: 0;
     z-index: 169;
     --scroll: 0%;
@@ -53,24 +62,13 @@ main {
 .scrollBar::after {
     content: '';
     position: absolute;
-    background-color: #76bbc4;
+    background-color: var(--secondary);
+    filter: brightness(0.7);
     top: 0;
     right: 0;
     width: 8px;
     height: var(--scroll);
     z-index: 2;
-}
-
-.scrollBar::before {
-    content: '';
-    position: absolute;
-    background-color: #76bbc4;
-    top: 0;
-    right: 0;
-    width: 8px;
-    height: 100%;
-    z-index: 1;
-    opacity: 0.2;
 }
 
 @font-face {

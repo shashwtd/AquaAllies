@@ -1,7 +1,7 @@
 .header {
     position: fixed;
     width: 100vw;
-    height: 6em;
+    height: var(--hh);
     top: 0;
     z-index: 10;
 
