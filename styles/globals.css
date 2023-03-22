@@ -16,7 +16,7 @@ body {
 
 :root {
   --primary: #000000;
-  --secondary: #e3e4e7;
+  --secondary: #eff0f3;
   --text: #151515; 
   --bluish: #494c4d;
 
@@ -63,7 +63,7 @@ a {
     content: '';
     position: absolute;
     background-color: var(--secondary);
-    filter: brightness(0.7);
+    filter: brightness(0.8);
     top: 0;
     right: 0;
     width: 8px;

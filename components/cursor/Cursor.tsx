@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import styles from './Cursor.module.css'
 
 const Cursor = () => {
-  const [isClicked, setIsClicked] = useState(false);
   React.useEffect(() => {
     const cursor = document.querySelector('#cursor') as HTMLElement;
     const cursorCircle = document.querySelector('#cursorCircle') as HTMLElement;
@@ -17,9 +16,6 @@ const Cursor = () => {
     }
 
     window.addEventListener('mousemove', updateCoordinates);
-    window.addEventListener('mousedown', () => setIsClicked(true));
-    window.addEventListener('mouseup', () => setIsClicked(false));
-    
     window.addEventListener('mouseout', () => { cursor.setAttribute('state', 'hide'); });
     window.addEventListener('mouseover', () => { cursor.setAttribute('state', ''); });
 
@@ -32,7 +28,7 @@ const Cursor = () => {
         Math.pow(diffX, 2) + Math.pow(diffY, 2)
       );
       const maxSqueeze = 0.15;
-      const accelerator = 1500;
+      const accelerator = 1400;
       return Math.min(distance / accelerator, maxSqueeze);
     }
 
@@ -52,12 +48,7 @@ const Cursor = () => {
       const translate = 'translate3d(' + pos.x + 'px ,' + pos.y + 'px, 0)';
 
       cursor.style.transform = translate;
-
-      if (isClicked) {
-        cursorCircle.style.transform = rotate + scale + ' scale(0.5)';
-      } else {
-        cursorCircle.style.transform = rotate + scale;
-      }
+      cursorCircle.style.transform = rotate + scale;
 
     };
 
@@ -77,11 +68,10 @@ const Cursor = () => {
       });
       
       curosrModifier.addEventListener('mouseleave', function(this: any) {
-        const className = this.getAttribute('cursor-class');
         cursor.setAttribute('state', '');
       });
     });
-  }, [isClicked]);
+  }, []);
 
   return (
     <div className={styles.cursor} id="cursor">

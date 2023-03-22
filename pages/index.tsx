@@ -2,7 +2,7 @@ import styles from "@/styles/Home.module.css";
 import Head from "next/head";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import Lenis from "@studio-freight/lenis";
@@ -10,9 +10,20 @@ import Lenis from "@studio-freight/lenis";
 function HomePage() {
 	gsap.registerPlugin(ScrollTrigger);
 	const titleRef = useRef<HTMLDivElement>(null);
+	const slideShowRef = useRef<HTMLDivElement>(null);
+
+	function easeOutCirc(x: number): number {
+		return Math.sqrt(1 - Math.pow(x - 1, 2));
+	}
+
+	const percW = (w=0) => {return w > 0 ? (w / window.innerWidth) * 100 : window.innerWidth}
+	const percH = (h=0) => {return h > 0 ? (h / window.innerHeight) * 100 : window.innerHeight}
 
 	useEffect(() => {
-		const lenis = new Lenis();
+		const lenis = new Lenis({
+			duration: 1.4,
+			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+		});
 		function raf(time: any) {
 			lenis.raf(time);
 			requestAnimationFrame(raf);
@@ -21,32 +32,50 @@ function HomePage() {
 
 		const title = titleRef.current;
 		if (title) {
-			let tl = gsap.timeline({
+			gsap.to(title, {
+				scale: 0.9,
+				x: "-200px",
 				scrollTrigger: {
 					trigger: title,
-					start: "top 30%",
-					end: "bottom 30%",
+					start: `top ${percH(title.offsetTop)}%`,
+					end: "bottom 20%",
 					scrub: true,
 				},
 			});
-			tl.to(title, { opacity: 0 });
+			gsap.to(title, {
+				opacity: 0,
+				scrollTrigger: {
+					trigger: title,
+					start: `top 40%`,
+					end: "bottom 20%",
+					scrub: true,
+				},
+			});
 		}
 
-		const pages = document.querySelectorAll("#pageTrigger");
-		pages.forEach((page, index) => {
-			ScrollTrigger.create({
-				trigger: page,
-				start: "top 70%",
-				onEnter: () => {},
+		const ss = slideShowRef.current;
+		if (ss) {
+			gsap.to(ss, {
+				opacity: 1,
+				scale: 1,
+				marginTop: "0",
+				scrollTrigger: {
+					trigger: ss,
+					start: "top 100%",
+					end: "top 30%",
+					scrub: true,
+				},
 			});
-		});
-
-		const beachImg = document.getElementById("beachImg");
-		beachImg?.addEventListener("mouseenter", () => {
-			gsap.to(beachImg, {
-				zoom: 1.1,
-			})
-		});
+			gsap.to(ss, {
+				backgroundSize: "140%",
+				backgroundPositionY: "30%",
+				scrollTrigger: {
+					trigger: ss,
+					start: "top 60%",
+					scrub: true,
+				},
+			});
+		}
 	}, []);
 
 	return (
@@ -56,8 +85,8 @@ function HomePage() {
 			</Head>
 
 			<main>
-				<div className={styles.page} page-index="1">
-					<div id="pageTrigger"></div>
+				<div className={styles.page} page-index="1" id="page">
+					<div></div>
 					<div className={styles.landing}>
 						<div className={styles.title} ref={titleRef}>
 							<span cursor-class="grow">Worldwide</span>
@@ -65,39 +94,73 @@ function HomePage() {
 						</div>
 					</div>
 				</div>
-				<div className={styles.page} page-index="2">
-					<div id="pageTrigger"></div>
-					<div className={styles.content}>
+				<div className={styles.page} page-index="2" id="page">
+					<div
+						className={styles.content}
+						id="slideShow"
+						ref={slideShowRef}
+					>
+						<Image
+							src="/images/beach1.jpg"
+							alt="OverScroll Picture"
+							priority
+							fill
+						/>
 						<div className={styles.card}>
-							<img
-								className={styles.pageImg}
-								src="/images/beach1.jpg"
-								alt="turtle swimming in ocean"
-								id="beachImg"
-								// fill
-								// priority
-								cursor-class="hide"
-							/>
-						</div>
-						<div className={styles.card}>
-							<div className={styles.inner}>
-								<h2 className={styles.pageTitle}>
-									What&apos;s this all about?
-								</h2>
-								<p className={styles.pageDesc}>
-									The global water pollution crisis is a major
-									threat for acheiving sustainable
-									development. It not only affects the
-									upcoming generation but has a drastic impact
-									on us and other beings in the environment.
-									<br />
+							<div className={styles.cardContent}>
+								<h2>Pollution of Beaches</h2>
+								<p>
+									The water scarcity has been increasing at a
+									rapid speed since ages. This has lead to
+									mass amount of water being polluted and very
+									less safe water for daily purposes. If we
+									don&apos;t take measures against this,
+									There&apos;s only harm to our dream of a
+									sustainable future.
 								</p>
 							</div>
-							{/* <div className={styles.inner}>
-								<h2 className="pageLink">
-									<Link href="/showreel">Watch Showreel</Link>
-								</h2>
-							</div> */}
+						</div>
+						<div className={styles.card}>
+							<div className={styles.cardContent}>
+								<h2>Pollution of Beaches</h2>
+								<p>
+									The water scarcity has been increasing at a
+									rapid speed since ages. This has lead to
+									mass amount of water being polluted and very
+									less safe water for daily purposes. If we
+									don&apos;t take measures against this,
+									There&apos;s only harm to our dream of a
+									sustainable future.
+								</p>
+							</div>
+						</div>
+						<div className={styles.card}>
+							<div className={styles.cardContent}>
+								<h2>Pollution of Beaches</h2>
+								<p>
+									The water scarcity has been increasing at a
+									rapid speed since ages. This has lead to
+									mass amount of water being polluted and very
+									less safe water for daily purposes. If we
+									don&apos;t take measures against this,
+									There&apos;s only harm to our dream of a
+									sustainable future.
+								</p>
+							</div>
+						</div>
+						<div className={styles.card}>
+							<div className={styles.cardContent}>
+								<h2>Pollution of Beaches</h2>
+								<p>
+									The water scarcity has been increasing at a
+									rapid speed since ages. This has lead to
+									mass amount of water being polluted and very
+									less safe water for daily purposes. If we
+									don&apos;t take measures against this,
+									There&apos;s only harm to our dream of a
+									sustainable future.
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
