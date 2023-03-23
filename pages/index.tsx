@@ -10,7 +10,6 @@ import Lenis from "@studio-freight/lenis";
 function HomePage() {
   gsap.registerPlugin(ScrollTrigger);
   const titleRef = useRef<HTMLDivElement>(null);
-  const lineHeightRef = useRef<HTMLDivElement>(null);
 
   function easeOutCirc(x: number): number {
     return Math.sqrt(1 - Math.pow(x - 1, 2));
@@ -61,25 +60,20 @@ function HomePage() {
       });
     }
 
-    const lhr = lineHeightRef.current;
-    if (lhr) {
-      gsap.from(lhr, {
-        lineHeight: 3,
-        duration: 1,
-      });
-      gsap.to(lhr, {
+    const lhr = document.querySelectorAll(`.${styles.intro}`);
+    lhr.forEach((el) => {
+      gsap.set(el, { lineHeight: 2.3, transformOrigin: "top" });
+      gsap.to(el, {
+        lineHeight: 1.3,
         duration: 1.4,
-        lineHeight: 1.2,
         scrollTrigger: {
-          trigger: lhr,
+          trigger: el,
           start: "top 100%",
-          end: "top 10%",
+          end: "top 50%",
           scrub: true,
         },
       });
-
-      // ScrollTrigger.
-    }
+    });
   }, []);
 
   return (
@@ -100,23 +94,44 @@ function HomePage() {
         </div>
         <div className={styles.page} page-index="2" id="page">
           <div className={styles.content}>
-            <div className={styles.intro} ref={lineHeightRef} cursor-class="grow">
-              &quot;The water around us keeps getting polluted as the years go by.
+            <div className={styles.intro} cursor-class="grow">
+              The water around us keeps getting polluted as the years go by.
               It&apos;s now more important than ever to help clean up the water
-              around us.&quot;
+              around us.
             </div>
-            <Image
-              src="/images/beach2.jpg"
-              alt="Kid at a beach"
-              width={800}
-              height={490}
-              priority
-              cursor-class="subtle"
-              className={styles.introImg}
-            />
+            <div className={styles.introImgCont}>
+              <Image
+                src="/images/beach0.jpg"
+                alt="Kid at a beach"
+                width={800}
+                height={490}
+                priority
+                cursor-class="subtle"
+                className={styles.introImg}
+              />
+              <p cursor-class="overlay"> Dirty beach filled with plastic left by tourists</p>
+            </div>
+          </div>
+          <div className={styles.content}>
+            <div className={styles.intro} cursor-class="grow">
+              While most of us have clean supply of water, There are some who
+              don&apos;t have any source of clean water and even find a glass of
+              water to be a blessing.
+            </div>
+            <div className={styles.introImgCont}>
+              <Image
+                src="/images/beach1.jpg"
+                alt="Kid at a beach"
+                width={800}
+                height={490}
+                priority
+                cursor-class="subtle"
+                className={styles.introImg}
+              />
+              <p cursor-class="overlay"> There is lots of water — but still nothing to drink!</p>
+            </div>
           </div>
         </div>
-        <div className={styles.page} page-index="3" id="page"></div>
       </main>
     </>
   );
