@@ -21,7 +21,7 @@ export default function App({ Component, pageProps }: AppProps) {
 			<Header />
 			<Cursor />
 			<div className="scrollBar" id="scroll"></div>
-			<div className="noise"></div>
+			{/* <div className="noise"></div> */}
 			<Component {...pageProps} />
 		</>
 	);
