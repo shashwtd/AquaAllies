@@ -39,7 +39,7 @@
 .headerTitle {
     font-size: 1.6em;
     font-weight: 700;
-    opacity: .7;
+    opacity: .8;
     cursor: pointer;
     transition: 0.2s ease-out;
 }
@@ -58,7 +58,7 @@
 .options span {
     font-size: 1.1em;
     font-weight: 600;
-    opacity: .7;
+    opacity: .8;
     text-transform: lowercase;
     cursor: pointer;
     transition: 0.2s ease-out;
@@ -78,7 +78,7 @@
     font-weight: 700;
     cursor: pointer;
     border: 2px solid var(--text);
-    opacity: .6;
+    opacity: .65;
     transition: 0.2s ease-out;
 }
 
