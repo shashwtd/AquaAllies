@@ -8,165 +8,118 @@ import Link from "next/link";
 import Lenis from "@studio-freight/lenis";
 
 function HomePage() {
-	gsap.registerPlugin(ScrollTrigger);
-	const titleRef = useRef<HTMLDivElement>(null);
-	const slideShowRef = useRef<HTMLDivElement>(null);
+  gsap.registerPlugin(ScrollTrigger);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const lineHeightRef = useRef<HTMLDivElement>(null);
 
-	function easeOutCirc(x: number): number {
-		return Math.sqrt(1 - Math.pow(x - 1, 2));
-	}
+  function easeOutCirc(x: number): number {
+    return Math.sqrt(1 - Math.pow(x - 1, 2));
+  }
 
-	const percW = (w=0) => {return w > 0 ? (w / window.innerWidth) * 100 : window.innerWidth}
-	const percH = (h=0) => {return h > 0 ? (h / window.innerHeight) * 100 : window.innerHeight}
+  const percW = (w = 0) => {
+    return w > 0 ? (w / window.innerWidth) * 100 : window.innerWidth;
+  };
+  const percH = (h = 0) => {
+    return h > 0 ? (h / window.innerHeight) * 100 : window.innerHeight;
+  };
+  const em = (n = 1) => {
+    return 14 * n + "px";
+  };
 
-	useEffect(() => {
-		const lenis = new Lenis({
-			duration: 1.4,
-			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-		});
-		function raf(time: any) {
-			lenis.raf(time);
-			requestAnimationFrame(raf);
-		}
-		requestAnimationFrame(raf);
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+    function raf(time: any) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
 
-		const title = titleRef.current;
-		if (title) {
-			gsap.to(title, {
-				scale: 0.9,
-				x: "-200px",
-				scrollTrigger: {
-					trigger: title,
-					start: `top ${percH(title.offsetTop)}%`,
-					end: "bottom 20%",
-					scrub: true,
-				},
-			});
-			gsap.to(title, {
-				opacity: 0,
-				scrollTrigger: {
-					trigger: title,
-					start: `top 40%`,
-					end: "bottom 20%",
-					scrub: true,
-				},
-			});
-		}
+    requestAnimationFrame(raf);
 
-		const ss = slideShowRef.current;
-		if (ss) {
-			gsap.to(ss, {
-				opacity: 1,
-				scale: 1,
-				marginTop: "0",
-				scrollTrigger: {
-					trigger: ss,
-					start: "top 100%",
-					end: "top 30%",
-					scrub: true,
-				},
-			});
-			gsap.to(ss, {
-				backgroundSize: "140%",
-				backgroundPositionY: "30%",
-				scrollTrigger: {
-					trigger: ss,
-					start: "top 60%",
-					scrub: true,
-				},
-			});
-		}
-	}, []);
+    const title = titleRef.current;
+    if (title) {
+      gsap.to(title, {
+        scale: 0.9,
+        x: -100,
+        y: -200,
+        scrollTrigger: {
+          trigger: title,
+          start: `top ${percH(title.offsetTop)}%`,
+          end: "bottom 20%",
+          scrub: true,
+        },
+      });
+      gsap.to(title, {
+        scrollTrigger: {
+          trigger: title,
+          start: `top 40%`,
+          end: "bottom 20%",
+          scrub: true,
+        },
+      });
+    }
 
-	return (
-		<>
-			<Head>
-				<title>Project Title</title>
-			</Head>
+    const lhr = lineHeightRef.current;
+    if (lhr) {
+      gsap.from(lhr, {
+        lineHeight: 3,
+        duration: 1,
+      });
+      gsap.to(lhr, {
+        duration: 1.4,
+        lineHeight: 1.2,
+        scrollTrigger: {
+          trigger: lhr,
+          start: "top 100%",
+          end: "top 10%",
+          scrub: true,
+        },
+      });
 
-			<main>
-				<div className={styles.page} page-index="1" id="page">
-					<div></div>
-					<div className={styles.landing}>
-						<div className={styles.title} ref={titleRef}>
-							<span cursor-class="grow">Worldwide</span>
-							<span cursor-class="grow">Clean Water</span>
-						</div>
-					</div>
-				</div>
-				<div className={styles.page} page-index="2" id="page">
-					<div
-						className={styles.content}
-						id="slideShow"
-						ref={slideShowRef}
-					>
-						<Image
-							src="/images/beach1.jpg"
-							alt="OverScroll Picture"
-							priority
-							fill
-						/>
-						<div className={styles.card}>
-							<div className={styles.cardContent}>
-								<h2>Pollution of Beaches</h2>
-								<p>
-									The water scarcity has been increasing at a
-									rapid speed since ages. This has lead to
-									mass amount of water being polluted and very
-									less safe water for daily purposes. If we
-									don&apos;t take measures against this,
-									There&apos;s only harm to our dream of a
-									sustainable future.
-								</p>
-							</div>
-						</div>
-						<div className={styles.card}>
-							<div className={styles.cardContent}>
-								<h2>Pollution of Beaches</h2>
-								<p>
-									The water scarcity has been increasing at a
-									rapid speed since ages. This has lead to
-									mass amount of water being polluted and very
-									less safe water for daily purposes. If we
-									don&apos;t take measures against this,
-									There&apos;s only harm to our dream of a
-									sustainable future.
-								</p>
-							</div>
-						</div>
-						<div className={styles.card}>
-							<div className={styles.cardContent}>
-								<h2>Pollution of Beaches</h2>
-								<p>
-									The water scarcity has been increasing at a
-									rapid speed since ages. This has lead to
-									mass amount of water being polluted and very
-									less safe water for daily purposes. If we
-									don&apos;t take measures against this,
-									There&apos;s only harm to our dream of a
-									sustainable future.
-								</p>
-							</div>
-						</div>
-						<div className={styles.card}>
-							<div className={styles.cardContent}>
-								<h2>Pollution of Beaches</h2>
-								<p>
-									The water scarcity has been increasing at a
-									rapid speed since ages. This has lead to
-									mass amount of water being polluted and very
-									less safe water for daily purposes. If we
-									don&apos;t take measures against this,
-									There&apos;s only harm to our dream of a
-									sustainable future.
-								</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</main>
-		</>
-	);
+      // ScrollTrigger.
+    }
+  }, []);
+
+  return (
+    <>
+      <Head>
+        <title>Project Title</title>
+      </Head>
+
+      <main>
+        <div className={styles.page} page-index="1" id="page">
+          <div></div>
+          <div className={styles.landing}>
+            <div className={styles.title} ref={titleRef}>
+              <span cursor-class="grow">Worldwide</span>
+              <span cursor-class="grow">Clean Water</span>
+            </div>
+          </div>
+        </div>
+        <div className={styles.page} page-index="2" id="page">
+          <div className={styles.content}>
+            <div className={styles.intro} ref={lineHeightRef} cursor-class="grow">
+              &quot;The water around us keeps getting polluted as the years go by.
+              It&apos;s now more important than ever to help clean up the water
+              around us.&quot;
+            </div>
+            <Image
+              src="/images/beach2.jpg"
+              alt="Kid at a beach"
+              width={800}
+              height={490}
+              priority
+              cursor-class="subtle"
+              className={styles.introImg}
+            />
+          </div>
+        </div>
+        <div className={styles.page} page-index="3" id="page"></div>
+      </main>
+    </>
+  );
 }
 
 export default HomePage;
