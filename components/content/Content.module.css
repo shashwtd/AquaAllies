@@ -28,6 +28,22 @@
   transform: translateY(10em);
 }
 
+.content .introImgCont::after {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  left: 115%;
+  width: 20%;
+  height: 40%;
+  transform: rotate(120deg);
+  opacity: 0.3;
+  background-image: url("/assets/curved_arrow.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  pointer-events: none;
+}
+
 .content .introImgCont p {
   position: absolute;
   font-size: 1em;
@@ -90,6 +106,11 @@
 }
 .content:nth-child(2n) .introImgCont p {
   right: 0;
+}
+.content:nth-child(2n) .introImgCont::after {
+  left: initial;
+  right: 115%;
+  transform: rotate(-120deg) scaleX(-1);
 }
 .content:nth-child(2n) .intro {
   transform-origin: top right;

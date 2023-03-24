@@ -79,8 +79,8 @@ function HomePage() {
               around us."
           />
           <Content
-            image="/images/beach2.jpg"
-            caption="There is lots of water — but still nothing to drink!"
+            image="/images/beach3.jpg"
+            caption="Lots of water available — but still nothing to drink!"
             text="
                 While most of us have clean supply of water, There are some who
                 don't have any source of clean water and even find a glass of

@@ -56,10 +56,11 @@ export default function Content(prop: {
       el.addEventListener("mouseleave", () => {
         const text = el.querySelector("p");
         if (text) {
+          let img = el.querySelector("img") as HTMLImageElement;
           gsap.to(text, {
             delay: 0.1,
             duration: 0.4,
-            text: prop.caption,
+            text: img.alt,
           });
         }
       });
