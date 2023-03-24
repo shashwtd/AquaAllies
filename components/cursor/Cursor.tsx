@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import styles from './Cursor.module.css'
+import styles from './Cursor.module.css';
 
 const Cursor = () => {
   React.useEffect(() => {
     const cursor = document.querySelector('#cursor') as HTMLElement;
     const cursorCircle = document.querySelector('#cursorCircle') as HTMLElement;
+    var wobble = true;
 
     const mouse = { x: -100, y: -100 }; // mouse pointer's coordinates
     const pos = { x: 0, y: 0 }; // cursor's coordinates
@@ -28,7 +29,7 @@ const Cursor = () => {
         Math.pow(diffX, 2) + Math.pow(diffY, 2)
       );
       const maxSqueeze = 0.15;
-      const accelerator = 1400;
+      const accelerator = 1500;
       return Math.min(distance / accelerator, maxSqueeze);
     }
 
@@ -48,8 +49,7 @@ const Cursor = () => {
       const translate = 'translate3d(' + pos.x + 'px ,' + pos.y + 'px, 0)';
 
       cursor.style.transform = translate;
-      cursorCircle.style.transform = rotate + scale;
-
+      if (wobble) cursorCircle.style.transform = scale + ' ' + rotate;
     };
 
     function loop() {
@@ -61,14 +61,19 @@ const Cursor = () => {
 
 
     const cursorModifiers = document.querySelectorAll('[cursor-class]');
-    cursorModifiers.forEach(curosrModifier => {
-      curosrModifier.addEventListener('mouseenter', function(this: any) {
-        const className = this.getAttribute('cursor-class');
-        cursor.setAttribute('state', className);
+    cursorModifiers.forEach(cursorModifier => {
+      cursorModifier.addEventListener('mouseenter', function(this: any) {
+        const cursorClass = this.getAttribute('cursor-class');
+        cursor.setAttribute('state', cursorClass);
+        cursorClass == "arrow" ? wobble=false : wobble=true;
+        if (cursorClass == "arrow") {
+          cursorCircle.style.transform = 'rotate(0deg)';
+        }
       });
       
-      curosrModifier.addEventListener('mouseleave', function(this: any) {
+      cursorModifier.addEventListener('mouseleave', function() {
         cursor.setAttribute('state', '');
+        wobble=true;
       });
     });
   }, []);
