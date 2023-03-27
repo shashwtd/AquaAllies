@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  transform-origin: center right;
 }
 
 .content .intro {
@@ -72,6 +73,18 @@
   cursor: pointer;
 }
 
+.content .introImgOverlay {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: calc(100% + 20px);
+  height: calc(100% + 25px + 1.2em);
+  border-radius: 5px;
+  z-index: 4;
+  opacity: 0;
+  cursor: pointer;
+}
+
 .content .introImgBox {
   position: absolute;
   top: -10px;
@@ -80,7 +93,6 @@
   height: calc(100% + 25px + 1.2em);
   border-radius: 5px;
   background-color: #9a9090;
-  z-index: 1;
   transform-origin: bottom;
   opacity: 0.3;
   z-index: 2;
@@ -123,6 +135,9 @@
   left: initial;
   right: 115%;
   transform: rotate(-120deg) scaleX(-1);
+}
+.content:nth-child(2n) {
+  transform-origin: center left;
 }
 .content:nth-child(2n) .intro {
   transform-origin: top right;

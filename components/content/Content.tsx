@@ -13,6 +13,7 @@ export default function Content(prop: {
   text: string;
   image: string;
   caption: string;
+  clickback: (data: {}, callback: () => void) => void;
 }) {
   React.useEffect(() => {
     const lhr = document.querySelectorAll(`.${styles.intro}`);
@@ -38,11 +39,12 @@ export default function Content(prop: {
     const contents = document.querySelectorAll(`.${styles.content}`);
     contents.forEach((el) => {
       gsap.to(el, {
-        y: -300,
+        y: -100,
+        scale: 0.95,
         scrollTrigger: {
           trigger: el,
-          start: "top 20%",
-          end: "bottom 30%",
+          start: "top 10%",
+          end: "top -50%",
           scrub: true,
         },
       });
@@ -86,30 +88,48 @@ export default function Content(prop: {
       });
     });
   });
+
+  function handleLinkClick(e: Event) {
+    prop.clickback(
+      {
+        tag: prop.tag,
+        text: prop.text,
+        image: prop.image,
+        caption: prop.caption,
+      },
+      () => {
+        console.log("RETURN SIGNAL BABY");
+      }
+    );
+  }
+
   return (
     <div className={styles.content}>
       <div className={styles.intro} cursor-class="grow">
         {prop.text}
       </div>
-      <Link href={"/more" + prop.tag}>
-        <div className={styles.introImgCont}>
-          <div>
-            <div className={styles.introImgBox}></div>
-            <div className={styles.introImgX}>
-              <Image
-                cursor-class="arrow"
-                src={prop.image}
-                alt={prop.caption}
-                width={800}
-                height={490}
-                priority
-                className={styles.introImg}
-              />
-            </div>
-            <p>{prop.caption}</p>
+      <div className={styles.introImgCont}>
+        <div>
+          <div className={styles.introImgBox}></div>
+          <div
+            className={styles.introImgOverlay}
+            cursor-class="arrow"
+            id="topicLink"
+            onClick={() => {handleLinkClick(event)}}
+          ></div>
+          <div className={styles.introImgX}>
+            <Image
+              src={prop.image}
+              alt={prop.caption}
+              width={800}
+              height={490}
+              priority
+              className={styles.introImg}
+            />
           </div>
+          <p>{prop.caption}</p>
         </div>
-      </Link>
+      </div>
     </div>
   );
 }

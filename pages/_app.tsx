@@ -1,8 +1,6 @@
 import React from "react";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-import Header from "@/components/header/Header";
-import Cursor from "@/components/cursor/Cursor";
 
 export default function App({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
@@ -16,11 +14,11 @@ export default function App({ Component, pageProps }: AppProps) {
   }, []);
 
   return (
-    <div className="page-wrapper">
-      <Header />
-      <Cursor />
-      <div className="scrollBar" id="scroll"></div>
-      <Component {...pageProps} />
-    </div>
+    <React.StrictMode>
+      <div className="page-wrapper">
+        <div className="scrollBar" id="scroll"></div>
+        <Component {...pageProps} />
+      </div>
+    </React.StrictMode>
   );
 }

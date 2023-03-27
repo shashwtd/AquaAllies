@@ -7,6 +7,8 @@ import { useEffect, useRef, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import Content from "@/components/content/Content";
 import Link from "next/link";
+import Header from "@/components/header/Header";
+import Cursor from "@/components/cursor/Cursor";
 
 function HomePage() {
   gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -55,11 +57,19 @@ function HomePage() {
     }
   }, []);
 
+  function topicTransition(data: any, callback_: any) {
+    alert("Transitioning to " + data.tag);
+  }
+
   return (
     <>
       <Head>
         <title>Project Title</title>
       </Head>
+
+      <Header />
+      <Cursor />
+
 
       <main>
         <div className={styles.page} page-index="1" id="pageLanding">
@@ -79,6 +89,7 @@ function HomePage() {
             text="The water around us keeps getting polluted as the years go by.
               It's now more important than ever to help clean up the water
               around us."
+            clickback={topicTransition}
           />
           <Content
             tag="/dirty-waters"
@@ -88,6 +99,7 @@ function HomePage() {
                 While most of us have clean supply of water, There are some who
                 don't have any source of clean water and even find a glass of
                 water to be a blessing."
+            clickback={topicTransition}
           ></Content>
         </div>
       </main>
