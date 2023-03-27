@@ -73,6 +73,7 @@ function HomePage() {
         </div>
         <div className={styles.page} page-index="2" id="pageIntro">
           <Content
+            tag="/polluted-rivers"
             image="/images/river.jpg"
             caption="A polluted river which is the source of water for many people."
             text="The water around us keeps getting polluted as the years go by.
@@ -80,6 +81,7 @@ function HomePage() {
               around us."
           />
           <Content
+            tag="/dirty-waters"
             image="/images/beach3.jpg"
             caption="Lots of water available — but still nothing to drink!"
             text="
