@@ -6,6 +6,7 @@ import { TextPlugin } from "gsap/dist/TextPlugin";
 import { useEffect, useRef, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import Content from "@/components/content/Content";
+import Link from "next/link";
 
 function HomePage() {
   gsap.registerPlugin(ScrollTrigger, TextPlugin);
