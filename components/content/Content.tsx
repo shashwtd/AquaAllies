@@ -89,7 +89,7 @@ export default function Content(prop: {
     });
   });
 
-  function handleLinkClick(e: Event) {
+  function handleLinkClick(e: any) {
     prop.clickback(
       {
         tag: prop.tag,
