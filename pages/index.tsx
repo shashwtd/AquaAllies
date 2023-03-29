@@ -1,4 +1,5 @@
 import styles from "@/styles/Home.module.css";
+import topic from "@/styles/Topic.module.css";
 import Head from "next/head";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
@@ -6,9 +7,10 @@ import { TextPlugin } from "gsap/dist/TextPlugin";
 import { useEffect, useRef, useState } from "react";
 import Lenis from "@studio-freight/lenis";
 import Content from "@/components/content/Content";
-import Link from "next/link";
 import Header from "@/components/header/Header";
-import Cursor from "@/components/cursor/Cursor";
+import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
+import React from "react";
+import Image from "next/image";
 
 function HomePage() {
   gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -57,8 +59,76 @@ function HomePage() {
     }
   }, []);
 
+  function setValues(data: any) {
+    let title = document.querySelector("#topicTitle") as HTMLElement;
+    let desc = document.querySelector("#topicDesc") as HTMLElement;
+    let img = document.querySelector("#topicImg") as HTMLElement;
+
+    if (title) title.innerText = data.tag;
+    if (desc) desc.innerHTML = data.long;
+    if (img) img.setAttribute("src", data.img);
+
+    gsap.set("#topicTitle", { x: 50, scale: 0.9, opacity: 0 });
+    gsap.set("#topicDesc p", { y: 50, opacity: 0 });
+
+    return ["#" + title.id, "#" + desc.id, "#" + img.id];
+  }
+
+  const [myCall, setMyCall] = useState(() => () => {});
+  const topicTimeline = gsap.timeline({});
   function topicTransition(data: any, callback_: any) {
-    alert("Transitioning to " + data.tag);
+    setMyCall(() => callback_);
+    const topicOverlay = document.querySelector("." + topic.overlay);
+    HideCursor();
+    let elms = setValues(data);
+    topicTimeline.set(topicOverlay, { background: data.color });
+    topicTimeline.to(topicOverlay, {
+      duration: 0.8,
+      y: 0,
+    });
+    gsap.set("#topicReturn", { x: 50, opacity: 0.1 });
+    topicTimeline.to("." + topic.content, {
+      opacity: 1,
+      duration: 0.5,
+      onStart: () => {
+        gsap.to("#topicReturn", {
+          x: 0,
+          opacity: 0.8,
+          duration: 0.5,
+        });
+      },
+      onComplete: () => {
+        ResetCursor();
+        topicTimeline.to(elms[0], {
+          x: 0,
+          scale: 1,
+          opacity: 1,
+          duration: 0.5,
+        });
+        topicTimeline.to(elms[1] + " p", {
+          y: 0,
+          opacity: 1,
+          duration: 0.6,
+          stagger: 0.3,
+        });
+      },
+    });
+  }
+
+  function closeTopic() {
+    const topicOverlay = document.querySelector("." + topic.overlay);
+    topicTimeline.to("." + topic.content, {
+      opacity: 0,
+      duration: 0.5,
+    });
+    topicTimeline.to(topicOverlay, {
+      duration: 0.8,
+      y: "100%",
+      onComplete: () => {
+        topicTimeline.set(topicOverlay, { y: "-100%" });
+        // myCall();
+      },
+    });
   }
 
   return (
@@ -70,6 +140,36 @@ function HomePage() {
       <Header />
       <Cursor />
 
+      <div className={topic.overlay}>
+        <div className={topic.content}>
+          <div className={topic.image}>
+            <div
+              className={topic.goBack}
+              cursor-class="overlay"
+              id="topicReturn"
+              onClick={() => {
+                closeTopic();
+              }}
+            >
+              <span>←</span> Return
+            </div>
+            <div className={topic.imgCont}>
+              <Image
+                fill
+                id="topicImg"
+                cursor-class="hide"
+                src="/images/river.jpg"
+                alt="Picture of the author"
+                className={topic.img}
+              ></Image>
+            </div>
+          </div>
+          <div className={topic.data}>
+            <h2 id="topicTitle"></h2>
+            <h4 id="topicDesc"></h4>
+          </div>
+        </div>
+      </div>
 
       <main>
         <div className={styles.page} page-index="1" id="pageLanding">
@@ -83,23 +183,29 @@ function HomePage() {
         </div>
         <div className={styles.page} page-index="2" id="pageIntro">
           <Content
-            tag="/polluted-rivers"
+            tag="Polluted Rivers."
             image="/images/river.jpg"
             caption="A polluted river which is the source of water for many people."
             text="The water around us keeps getting polluted as the years go by.
               It's now more important than ever to help clean up the water
               around us."
+            long="<p> The water around us keeps getting polluted as the years go by.
+            It's now more important than ever to help clean up the water
+            around us. We can get clean water to drink, bath, and cook with. But there are some parts of world which severely lack of clean water.</p><p>They rely of basic streams of water such as rivers or lakes to fulfil their water needs. Most of the dirty water produced from our homes is dumped into these rivers and lakes. This makes the water dirty and unfit for drinking. This is a major problem in many parts of the world. We can help by cleaning up the water around us.</p>"
             clickback={topicTransition}
+            color="#e4ded6"
           />
           <Content
-            tag="/dirty-waters"
+            tag="Lack of Clean Water."
             image="/images/beach3.jpg"
             caption="Lots of water available — but still nothing to drink!"
             text="
                 While most of us have clean supply of water, There are some who
                 don't have any source of clean water and even find a glass of
                 water to be a blessing."
+            long=""
             clickback={topicTransition}
+            color="#e4ded6"
           ></Content>
         </div>
       </main>
