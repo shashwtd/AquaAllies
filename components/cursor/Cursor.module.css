@@ -60,4 +60,8 @@
   .cursor[state="hide"] .cursorCircle {
     opacity: 0;
   }
+
+  .cursor[invisible] .cursorCircle {
+    opacity: 0 !important;
+  }
 }
