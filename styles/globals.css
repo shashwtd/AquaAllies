@@ -75,15 +75,9 @@ a {
   font-family: 'sharlee';
   src: url('/fonts/sharlee.woff2');
 }
-
-@font-face {
-    font-family: 'HK';
-    src: url('/fonts/HKGrotesk-Medium.woff2');
-}
-
 @font-face {
     font-family: 'HK_wide';
-    src: url('/fonts/HKGroteskWide-SemiBold.otf');
+    src: url('/fonts/HK_wide.otf');
 }
 
 @font-face {
