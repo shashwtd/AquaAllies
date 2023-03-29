@@ -7,17 +7,18 @@ import styles from "./Content.module.css";
 import { useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
-
-export default function Content(prop: {
+function Content(prop: {
   tag: string;
   text: string;
   image: string;
   caption: string;
   long: string;
   color: string;
-  clickback: (data: {}, callback: () => void) => void;
+  clickback: (data: {}) => void;
 }) {
   React.useEffect(() => {
+    console.log("Content Rendered -> " + prop.tag);
+    ScrollTrigger.refresh();
     const lhr = document.querySelectorAll(`.${styles.intro}`);
     lhr.forEach((el, index) => {
       if (index % 2 == 0) {
@@ -90,11 +91,7 @@ export default function Content(prop: {
     });
   });
 
-
-  const [isTopiccing, setTopiccing] = useState(false);
-  function handleLinkClick(e: any) {
-    if (isTopiccing) return;
-    setTopiccing(true);
+  function handleLinkClick() {
     prop.clickback(
       {
         tag: prop.tag,
@@ -104,9 +101,6 @@ export default function Content(prop: {
         long: prop.long,
         color: prop.color,
       },
-      () => {
-        setTopiccing(false);
-      }
     );
   }
 
@@ -122,7 +116,9 @@ export default function Content(prop: {
             className={styles.introImgOverlay}
             cursor-class="arrow"
             id="topicLink"
-            onClick={() => {handleLinkClick(event)}}
+            onClick={() => {
+              handleLinkClick();
+            }}
           ></div>
           <div className={styles.introImgX}>
             <Image
@@ -140,3 +136,5 @@ export default function Content(prop: {
     </div>
   );
 }
+
+export default React.memo(Content);
