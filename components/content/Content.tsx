@@ -4,7 +4,7 @@ import { TextPlugin } from "gsap/dist/TextPlugin";
 import React from "react";
 import Image from "next/image";
 import styles from "./Content.module.css";
-import Link from "next/link";
+import { useState } from "react";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
@@ -13,6 +13,8 @@ export default function Content(prop: {
   text: string;
   image: string;
   caption: string;
+  long: string;
+  color: string;
   clickback: (data: {}, callback: () => void) => void;
 }) {
   React.useEffect(() => {
@@ -40,7 +42,6 @@ export default function Content(prop: {
     contents.forEach((el) => {
       gsap.to(el, {
         y: -100,
-        scale: 0.95,
         scrollTrigger: {
           trigger: el,
           start: "top 10%",
@@ -89,16 +90,22 @@ export default function Content(prop: {
     });
   });
 
+
+  const [isTopiccing, setTopiccing] = useState(false);
   function handleLinkClick(e: any) {
+    if (isTopiccing) return;
+    setTopiccing(true);
     prop.clickback(
       {
         tag: prop.tag,
         text: prop.text,
         image: prop.image,
         caption: prop.caption,
+        long: prop.long,
+        color: prop.color,
       },
       () => {
-        console.log("RETURN SIGNAL BABY");
+        setTopiccing(false);
       }
     );
   }
