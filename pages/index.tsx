@@ -64,24 +64,29 @@ function HomePage() {
     let desc = document.querySelector("#topicDesc") as HTMLElement;
     let img = document.querySelector("#topicImg") as HTMLElement;
 
-    if (title) title.innerText = data.tag;
-    if (desc) desc.innerHTML = data.long;
+    if (title) {
+      title.innerText = data.tag;
+      gsap.set("#topicTitle", { x: 50, scale: 0.9, opacity: 0 });
+    }
+    if (desc) {
+      desc.innerHTML = data.long;
+      gsap.set("#topicDesc p", { y: 50, opacity: 0 });
+    }
     if (img) img.setAttribute("src", data.img);
-
-    gsap.set("#topicTitle", { x: 50, scale: 0.9, opacity: 0 });
-    gsap.set("#topicDesc p", { y: 50, opacity: 0 });
 
     return ["#" + title.id, "#" + desc.id, "#" + img.id];
   }
 
-  const [myCall, setMyCall] = useState(() => () => {});
-  const topicTimeline = gsap.timeline({});
-  function topicTransition(data: any, callback_: any) {
-    setMyCall(() => callback_);
-    const topicOverlay = document.querySelector("." + topic.overlay);
+  const [isTopic, topicIs] = useState(false);
+  function topicTransition(inf: any) {
+    ScrollTrigger.refresh();
+    if (isTopic) return;
+    topicIs(true);
     HideCursor();
-    let elms = setValues(data);
-    topicTimeline.set(topicOverlay, { background: data.color });
+    let elms = setValues(inf);
+    const topicTimeline = gsap.timeline({});
+    const topicOverlay = document.querySelector("." + topic.overlay);
+    topicTimeline.set(topicOverlay, { background: inf.color });
     topicTimeline.to(topicOverlay, {
       duration: 0.8,
       y: 0,
@@ -99,34 +104,38 @@ function HomePage() {
       },
       onComplete: () => {
         ResetCursor();
-        topicTimeline.to(elms[0], {
-          x: 0,
-          scale: 1,
-          opacity: 1,
-          duration: 0.5,
-        });
-        topicTimeline.to(elms[1] + " p", {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          stagger: 0.3,
-        });
+        if (elms[0] && elms[1]) {
+          topicTimeline.to(elms[0], {
+            x: 0,
+            scale: 1,
+            opacity: 1,
+            duration: 0.5,
+          });
+          topicTimeline.to(elms[1] + " p", {
+            y: 0,
+            opacity: 1,
+            duration: 0.6,
+            stagger: 0.3,
+          });
+        }
       },
     });
   }
 
   function closeTopic() {
+    ScrollTrigger.refresh();
     const topicOverlay = document.querySelector("." + topic.overlay);
-    topicTimeline.to("." + topic.content, {
+    gsap.to("." + topic.content, {
       opacity: 0,
       duration: 0.5,
     });
-    topicTimeline.to(topicOverlay, {
+    gsap.to(topicOverlay, {
+      delay: 0.4,
       duration: 0.8,
       y: "100%",
       onComplete: () => {
-        topicTimeline.set(topicOverlay, { y: "-100%" });
-        // myCall();
+        gsap.set(topicOverlay, { y: "-100%" });
+        topicIs(false);
       },
     });
   }
@@ -155,7 +164,8 @@ function HomePage() {
             </div>
             <div className={topic.imgCont}>
               <Image
-                fill
+                width={500}
+                height={220}
                 id="topicImg"
                 cursor-class="hide"
                 src="/images/river.jpg"
