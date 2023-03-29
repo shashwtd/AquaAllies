@@ -88,6 +88,7 @@
     margin: 0 0.2em 0 0.6em;
     line-height: 1;
     transform: translateY(1px);
+    pointer-events: none;
 }
 
 .action .actionButton:hover span {
