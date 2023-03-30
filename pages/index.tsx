@@ -77,11 +77,7 @@ function HomePage() {
     return ["#" + title.id, "#" + desc.id, "#" + img.id];
   }
 
-  const [isTopic, topicIs] = useState(false);
   function topicTransition(inf: any) {
-    ScrollTrigger.refresh();
-    if (isTopic) return;
-    topicIs(true);
     HideCursor();
     let elms = setValues(inf);
     const topicTimeline = gsap.timeline({});
@@ -92,6 +88,7 @@ function HomePage() {
       y: 0,
     });
     gsap.set("#topicReturn", { x: 50, opacity: 0.1 });
+    gsap.set("#topicImg", { scale: 0.9})
     topicTimeline.to("." + topic.content, {
       opacity: 1,
       duration: 0.5,
@@ -99,6 +96,11 @@ function HomePage() {
         gsap.to("#topicReturn", {
           x: 0,
           opacity: 0.8,
+          duration: 0.5,
+          delay: 0.3,
+        });
+        gsap.to("#topicImg", {
+          scale: 1,
           duration: 0.5,
         });
       },
@@ -115,7 +117,7 @@ function HomePage() {
             y: 0,
             opacity: 1,
             duration: 0.6,
-            stagger: 0.3,
+            stagger: 0.15,
           });
         }
       },
@@ -123,7 +125,6 @@ function HomePage() {
   }
 
   function closeTopic() {
-    ScrollTrigger.refresh();
     const topicOverlay = document.querySelector("." + topic.overlay);
     gsap.to("." + topic.content, {
       opacity: 0,
@@ -135,7 +136,6 @@ function HomePage() {
       y: "100%",
       onComplete: () => {
         gsap.set(topicOverlay, { y: "-100%" });
-        topicIs(false);
       },
     });
   }
