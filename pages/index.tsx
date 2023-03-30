@@ -133,9 +133,9 @@ function HomePage() {
     gsap.to(topicOverlay, {
       delay: 0.4,
       duration: 0.8,
-      y: "100%",
+      y: "-100%",
       onComplete: () => {
-        gsap.set(topicOverlay, { y: "-100%" });
+        gsap.set(topicOverlay, { y: "100%" });
       },
     });
   }

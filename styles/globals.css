@@ -71,6 +71,12 @@ a {
     z-index: 2;
 }
 
+::selection {
+  opacity: 0.8;
+  background-color: #1112;
+  border-radius: 20px;
+}
+
 @font-face {
   font-family: 'sharlee';
   src: url('/fonts/sharlee.woff2');
