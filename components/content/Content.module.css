@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   transform-origin: center right;
+  margin-bottom: 10em;
 }
 
 .content .intro {
@@ -127,7 +128,6 @@
 .content:nth-child(2n) {
   text-align: right;
   align-items: flex-end;
-  margin-top: 15em;
 }
 .content:nth-child(2n) .introImgCont p {
   right: 0;

@@ -13,7 +13,6 @@ function Content(prop: {
   image: string;
   caption: string;
   long: string;
-  color: string;
   clickback: (data: {}) => void;
 }) {
   React.useEffect(() => {
@@ -99,7 +98,6 @@ function Content(prop: {
         image: prop.image,
         caption: prop.caption,
         long: prop.long,
-        color: prop.color,
       },
     );
   }
@@ -120,7 +118,7 @@ function Content(prop: {
               handleLinkClick();
             }}
           ></div>
-          <div className={styles.introImgX}>
+          <div className={styles.introImgX} >
             <Image
               src={prop.image}
               alt={prop.caption}

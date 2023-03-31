@@ -4,17 +4,19 @@ import Head from "next/head";
 import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { TextPlugin } from "gsap/dist/TextPlugin";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 import Content from "@/components/content/Content";
 import Header from "@/components/header/Header";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import React from "react";
 import Image from "next/image";
+import ReactDOM from "react-dom";
 
 function HomePage() {
   gsap.registerPlugin(ScrollTrigger, TextPlugin);
   const titleRef = useRef<HTMLDivElement>(null);
+  const imageContainerRef = useRef<HTMLDivElement>(null);
 
   const percH = (h = 0) => {
     return h > 0 ? (h / window.innerHeight) * 100 : window.innerHeight;
@@ -62,7 +64,7 @@ function HomePage() {
   function setValues(data: any) {
     let title = document.querySelector("#topicTitle") as HTMLElement;
     let desc = document.querySelector("#topicDesc") as HTMLElement;
-    let img = document.querySelector("#topicImg") as HTMLElement;
+    let img = document.querySelector("#topicImageContainer") as HTMLElement;
 
     if (title) {
       title.innerText = data.tag;
@@ -72,7 +74,11 @@ function HomePage() {
       desc.innerHTML = data.long;
       gsap.set("#topicDesc p", { y: 50, opacity: 0 });
     }
-    if (img) img.setAttribute("src", data.img);
+    if (img)
+      ReactDOM.render(
+        generateImg(data.image, data.caption),
+        imageContainerRef.current
+      );
 
     return ["#" + title.id, "#" + desc.id, "#" + img.id];
   }
@@ -82,13 +88,12 @@ function HomePage() {
     let elms = setValues(inf);
     const topicTimeline = gsap.timeline({});
     const topicOverlay = document.querySelector("." + topic.overlay);
-    topicTimeline.set(topicOverlay, { background: inf.color });
     topicTimeline.to(topicOverlay, {
       duration: 0.8,
       y: 0,
     });
     gsap.set("#topicReturn", { x: 50, opacity: 0.1 });
-    gsap.set("#topicImg", { scale: 0.9})
+    gsap.set("#topicImg", { scale: 0.9 });
     topicTimeline.to("." + topic.content, {
       opacity: 1,
       duration: 0.5,
@@ -140,6 +145,20 @@ function HomePage() {
     });
   }
 
+  function generateImg(src: string, alt: string) {
+    return (
+      <Image
+        width={500}
+        height={220}
+        id="topicImg"
+        cursor-class="hide"
+        src={src}
+        alt={alt}
+        className={topic.img}
+      ></Image>
+    );
+  }
+
   return (
     <>
       <Head>
@@ -162,16 +181,16 @@ function HomePage() {
             >
               <span>←</span> Return
             </div>
-            <div className={topic.imgCont}>
-              <Image
-                width={500}
-                height={220}
-                id="topicImg"
-                cursor-class="hide"
-                src="/images/river.jpg"
-                alt="Picture of the author"
-                className={topic.img}
-              ></Image>
+            <div
+              className={topic.imgCont}
+              id="topicImageContainer"
+              ref={imageContainerRef}
+              cursor-class="hide"
+            >
+              {generateImg(
+                "/images/river.jpg",
+                "A polluted river which is the source of water for many people."
+              )}
             </div>
           </div>
           <div className={topic.data}>
@@ -193,30 +212,40 @@ function HomePage() {
         </div>
         <div className={styles.page} page-index="2" id="pageIntro">
           <Content
-            tag="Polluted Rivers."
-            image="/images/river.jpg"
-            caption="A polluted river which is the source of water for many people."
-            text="The water around us keeps getting polluted as the years go by.
-              It's now more important than ever to help clean up the water
-              around us."
-            long="<p> The water around us keeps getting polluted as the years go by.
-            It's now more important than ever to help clean up the water
-            around us. We can get clean water to drink, bath, and cook with. But there are some parts of world which severely lack of clean water.</p><p>They rely of basic streams of water such as rivers or lakes to fulfil their water needs. Most of the dirty water produced from our homes is dumped into these rivers and lakes. This makes the water dirty and unfit for drinking. This is a major problem in many parts of the world. We can help by cleaning up the water around us.</p>"
+            tag="Water Pollution"
+            image="/images/beach0.jpg"
+            caption="Polluted water in a river."
+            text="The water around us keeps getting polluted as the years go by. It's now more important than ever to help clean up the water around us."
+            long="<p>Water pollution is a major environmental issue that affects not only aquatic life, but also human health. Polluted water can contain harmful chemicals, bacteria, and other contaminants that can lead to serious illnesses and diseases.</p><p>Many sources of water pollution are caused by human activities, such as industrial waste, agricultural runoff, and improper disposal of household chemicals. Climate change also plays a role in water pollution, as rising temperatures can lead to increased algal blooms and decreased oxygen levels in water bodies.</p><p>We can all do our part to help prevent water pollution by properly disposing of waste, conserving water, and supporting organizations that work to protect and restore our waterways.</p>"
             clickback={topicTransition}
-            color="#e4ded6"
           />
+
           <Content
             tag="Lack of Clean Water."
-            image="/images/beach3.jpg"
-            caption="Lots of water available — but still nothing to drink!"
-            text="
-                While most of us have clean supply of water, There are some who
-                don't have any source of clean water and even find a glass of
-                water to be a blessing."
-            long=""
+            image="/images/river.jpg"
+            caption="A polluted river which is the source of water for many people."
+            text="While most of us have clean supply of water, there are some who don't have any source of clean water and even find a glass of water to be a blessing."
+            long="<p>Access to clean water is a basic human right, yet millions of people around the world do not have access to it. While we may take water for granted, there are others who struggle to find even a drop of clean water to drink.</p><p>Many people in developing countries rely on water sources that are contaminated with bacteria, viruses, and parasites. Drinking this water can lead to serious illnesses, and even death. Lack of access to clean water also prevents people from practicing basic hygiene, which can lead to the spread of diseases and illnesses.</p><p>We can help by supporting organizations that provide access to clean water and sanitation, and by taking steps to conserve water in our daily lives. Together, we can help ensure that everyone has access to this essential resource.</p>"
             clickback={topicTransition}
-            color="#e4ded6"
           ></Content>
+
+          {/* <Content
+            tag="Water Scarcity"
+            image="/images/drought.jpg"
+            caption="A dry and cracked river bed during a drought."
+            text="Water scarcity is becoming a serious issue in many parts of the world, leading to conflicts and displacement."
+            long="<p>Water scarcity occurs when demand for water exceeds the available supply, and is becoming an increasingly urgent issue in many parts of the world. Climate change, population growth, and unsustainable water use practices are all contributing to this problem.</p><p>Water scarcity can have severe consequences, such as crop failures, famine, conflicts over water resources, and displacement of populations. It is important that we work together to address this issue by implementing sustainable water use practices, investing in water infrastructure, and supporting communities affected by water scarcity.</p>"
+            clickback={topicTransition}
+          ></Content>
+
+          <Content
+            tag="Lack of Clean Water."
+            image="/images/river.jpg"
+            caption="A polluted river which is the source of water for many people."
+            text="While most of us have clean supply of water, there are some who don't have any source of clean water and even find a glass of water to be a blessing."
+            long="<p>Access to clean water is a basic human right, yet millions of people around the world do not have access to it. While we may take water for granted, there are others who struggle to find even a drop of clean water to drink.</p><p>Many people in developing countries rely on water sources that are contaminated with bacteria, viruses, and parasites. Drinking this water can lead to serious illnesses, and even death. Lack of access to clean water also prevents people from practicing basic hygiene, which can lead to the spread of diseases and illnesses.</p><p>We can help by supporting organizations that provide access to clean water and sanitation, and by taking steps to conserve water in our daily lives. Together, we can help ensure that everyone has access to this essential resource.</p>"
+            clickback={topicTransition}
+          ></Content> */}
         </div>
       </main>
     </>

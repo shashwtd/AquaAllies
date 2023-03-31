@@ -1,5 +1,6 @@
 import styles from "./Header.module.css";
 import Link from "next/link";
+import { HideCursor } from "../cursor/Cursor";
 
 export default function Header() {
   return (
@@ -17,7 +18,7 @@ export default function Header() {
         </Link>
       </div>
       <div className={styles.action}>
-        <span className={styles.actionButton} cursor-class="overlay">
+        <span className={styles.actionButton} cursor-class="overlay" onClick={HideCursor}>
           Contribute
           <span>→</span>
         </span>
