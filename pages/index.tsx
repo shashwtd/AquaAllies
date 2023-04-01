@@ -214,7 +214,7 @@ function HomePage() {
           <Content
             tag="Water Pollution"
             image="/images/beach0.jpg"
-            caption="Polluted water in a river."
+            caption="A beach covered with trash and plastics."
             text="The water around us keeps getting polluted as the years go by. It's now more important than ever to help clean up the water around us."
             long="<p>Water pollution is a major environmental issue that affects not only aquatic life, but also human health. Polluted water can contain harmful chemicals, bacteria, and other contaminants that can lead to serious illnesses and diseases.</p><p>Many sources of water pollution are caused by human activities, such as industrial waste, agricultural runoff, and improper disposal of household chemicals. Climate change also plays a role in water pollution, as rising temperatures can lead to increased algal blooms and decreased oxygen levels in water bodies.</p><p>We can all do our part to help prevent water pollution by properly disposing of waste, conserving water, and supporting organizations that work to protect and restore our waterways.</p>"
             clickback={topicTransition}
@@ -222,30 +222,39 @@ function HomePage() {
 
           <Content
             tag="Lack of Clean Water."
-            image="/images/river.jpg"
-            caption="A polluted river which is the source of water for many people."
+            image="/images/collecting_water.jpeg"
+            caption="People collecting water from a polluted river."
             text="While most of us have clean supply of water, there are some who don't have any source of clean water and even find a glass of water to be a blessing."
             long="<p>Access to clean water is a basic human right, yet millions of people around the world do not have access to it. While we may take water for granted, there are others who struggle to find even a drop of clean water to drink.</p><p>Many people in developing countries rely on water sources that are contaminated with bacteria, viruses, and parasites. Drinking this water can lead to serious illnesses, and even death. Lack of access to clean water also prevents people from practicing basic hygiene, which can lead to the spread of diseases and illnesses.</p><p>We can help by supporting organizations that provide access to clean water and sanitation, and by taking steps to conserve water in our daily lives. Together, we can help ensure that everyone has access to this essential resource.</p>"
             clickback={topicTransition}
-          ></Content>
-
-          {/* <Content
-            tag="Water Scarcity"
-            image="/images/drought.jpg"
-            caption="A dry and cracked river bed during a drought."
-            text="Water scarcity is becoming a serious issue in many parts of the world, leading to conflicts and displacement."
-            long="<p>Water scarcity occurs when demand for water exceeds the available supply, and is becoming an increasingly urgent issue in many parts of the world. Climate change, population growth, and unsustainable water use practices are all contributing to this problem.</p><p>Water scarcity can have severe consequences, such as crop failures, famine, conflicts over water resources, and displacement of populations. It is important that we work together to address this issue by implementing sustainable water use practices, investing in water infrastructure, and supporting communities affected by water scarcity.</p>"
-            clickback={topicTransition}
-          ></Content>
+          />
 
           <Content
-            tag="Lack of Clean Water."
-            image="/images/river.jpg"
-            caption="A polluted river which is the source of water for many people."
-            text="While most of us have clean supply of water, there are some who don't have any source of clean water and even find a glass of water to be a blessing."
-            long="<p>Access to clean water is a basic human right, yet millions of people around the world do not have access to it. While we may take water for granted, there are others who struggle to find even a drop of clean water to drink.</p><p>Many people in developing countries rely on water sources that are contaminated with bacteria, viruses, and parasites. Drinking this water can lead to serious illnesses, and even death. Lack of access to clean water also prevents people from practicing basic hygiene, which can lead to the spread of diseases and illnesses.</p><p>We can help by supporting organizations that provide access to clean water and sanitation, and by taking steps to conserve water in our daily lives. Together, we can help ensure that everyone has access to this essential resource.</p>"
+            tag="Water Scarcity"
+            image="/images/water-scarcity.jpg"
+            caption="A long line of people waiting for water."
+            text="Water scarcity is becoming an increasingly serious issue in many parts of the world, leading to conflicts, displacement, and even geopolitical tensions."
+            long="<p>Water scarcity occurs when demand for water exceeds the available supply, and is becoming an increasingly urgent issue in many parts of the world. Climate change, population growth, and unsustainable water use practices are all contributing to this problem.</p><p>Water scarcity can have severe consequences, such as crop failures, famine, conflicts over water resources, and displacement of populations. It is important that we work together to address this issue by implementing sustainable water use practices, investing in water infrastructure, and supporting communities affected by water scarcity.</p>"
             clickback={topicTransition}
-          ></Content> */}
+          />
+
+          <Content
+            tag="Water Conservation"
+            image="/images/rainwater-harvesting.jpeg"
+            caption="A house with rainwater harvesting system to save water."
+            text="Water is a precious resource that we should all strive to conserve. Even small changes in our daily habits can make a big difference."
+            long="<p>Water conservation is an important issue for everyone, regardless of where we live. While some areas may have abundant water resources, others may struggle with water scarcity. Additionally, climate change and population growth are putting increasing pressure on our water supplies.</p><p>There are many ways we can conserve water in our daily lives, such as fixing leaky faucets, taking shorter showers, and using drought-resistant plants in our gardens. It's also important for businesses and industries to adopt sustainable water use practices, such as using recycled water for irrigation or implementing water-efficient technologies.</p><p>By working together to conserve water, we can help ensure that we have enough clean water for everyone, now and in the future.</p>"
+            clickback={topicTransition}
+          />
+
+          <Content
+            tag="Wastewater Treatment"
+            image="/images/wastewater-treatment.jpg"
+            caption="A wastewater treatment plant."
+            text="Wastewater treatment is vital for protecting our environment and public health by removing harmful pollutants from water."
+            long="<p>Wastewater treatment is the process of removing contaminants from wastewater before it is released back into the environment. This can include removing solids, organic matter, and harmful chemicals or pathogens. Wastewater treatment is important because untreated wastewater can harm aquatic life, contaminate drinking water sources, and spread disease.</p><p>There are many different types of wastewater treatment systems, ranging from small septic systems for individual homes to large-scale treatment plants for entire cities. Advances in technology have made it possible to treat wastewater more efficiently and effectively, which is good news for both the environment and our wallets. By supporting investments in wastewater treatment infrastructure and technologies, we can help protect our environment and ensure that our water resources remain clean and safe.</p>"
+            clickback={topicTransition}
+          />
         </div>
       </main>
     </>
