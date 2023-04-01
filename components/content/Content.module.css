@@ -73,6 +73,8 @@
   transition: scale 0.7s;
   transform-origin: bottom left;
   cursor: pointer;
+  object-fit: cover;
+  height: auto;
 }
 
 .content .introImgOverlay {
