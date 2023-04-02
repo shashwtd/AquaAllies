@@ -4,7 +4,7 @@ import styles from "./Cursor.module.css";
 function ResetCursor() {
   const cursor = document.querySelector("#cursor") as HTMLElement;
   cursor.setAttribute("state", "");
-  cursor.removeAttribute("invisible")
+  cursor.removeAttribute("invisible");
 }
 
 function HideCursor() {
@@ -18,14 +18,19 @@ const Cursor = () => {
     const cursorCircle = document.querySelector("#cursorCircle") as HTMLElement;
     var wobble = true;
 
-    const mouse = { x: -100, y: -100 }; // mouse pointer's coordinates
-    const pos = { x: 0, y: 0 }; // cursor's coordinates
-    const speed = 0.08; // between 0 and 1
+    const mouse = { x: -100, y: -100 };
+    const pos = { x: 0, y: 0 };
+    const speed = 0.08;
 
     const updateCoordinates = (e: { clientX: number; clientY: number }) => {
       mouse.x = e.clientX;
       mouse.y = e.clientY;
     };
+
+    HideCursor();
+    setTimeout(() => {
+      ResetCursor();
+    }, 500);
 
     window.addEventListener("mousemove", updateCoordinates);
     window.addEventListener("mouseout", () => {
