@@ -11,14 +11,22 @@ export default function Header() {
         </h1>
       </Link>
       <div className={styles.options}>
-        <span cursor-class="overlay">Showreel</span>
-        <span cursor-class="overlay">Reports</span>
+        <Link href="/goals">
+          <span cursor-class="overlay">goals</span>
+        </Link>
+        <Link href="/reports">
+          <span cursor-class="overlay">reports</span>
+        </Link>
         <Link href="/more">
           <span cursor-class="overlay">more</span>
         </Link>
       </div>
       <div className={styles.action}>
-        <span className={styles.actionButton} cursor-class="overlay" onClick={HideCursor}>
+        <span
+          className={styles.actionButton}
+          cursor-class="overlay"
+          onClick={HideCursor}
+        >
           Contribute
           <span>→</span>
         </span>

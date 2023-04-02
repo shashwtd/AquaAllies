@@ -56,10 +56,9 @@
 }
 
 .options span {
-    font-size: 1.1em;
+    font-size: 1.2em;
     font-weight: 600;
     opacity: .8;
-    text-transform: lowercase;
     cursor: pointer;
     transition: 0.2s ease-out;
     padding: 0.2em 0.4em;
