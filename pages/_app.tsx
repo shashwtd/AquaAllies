@@ -1,6 +1,7 @@
 import React from "react";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
+import Header from "@/components/header/Header";
 
 export default function App({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
@@ -16,6 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <React.StrictMode>
       <div className="page-wrapper">
+        <Header />
         <div className="scrollBar" id="scroll"></div>
         <Component {...pageProps} />
       </div>

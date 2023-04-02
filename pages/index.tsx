@@ -7,7 +7,6 @@ import { TextPlugin } from "gsap/dist/TextPlugin";
 import { useEffect, useRef } from "react";
 import Lenis from "@studio-freight/lenis";
 import Content from "@/components/content/Content";
-import Header from "@/components/header/Header";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import React from "react";
 import Image from "next/image";
@@ -74,18 +73,20 @@ function HomePage() {
       desc.innerHTML = data.long;
       gsap.set("#topicDesc p", { y: 50, opacity: 0 });
     }
-    if (img)
+    if (img) {
       ReactDOM.render(
-        generateImg(data.image, data.caption),
+        generateImg(data.image, data.caption, okay),
         imageContainerRef.current
       );
+    }
 
-    return ["#" + title.id, "#" + desc.id, "#" + img.id];
+    function okay() {
+      proceed(["#" + title.id, "#" + desc.id, "#" + img.id]);
+    }
+
   }
 
-  function topicTransition(inf: any) {
-    HideCursor();
-    let elms = setValues(inf);
+  function proceed(elms: any) {
     const topicTimeline = gsap.timeline({});
     const topicOverlay = document.querySelector("." + topic.overlay);
     topicTimeline.to(topicOverlay, {
@@ -129,6 +130,11 @@ function HomePage() {
     });
   }
 
+  function topicTransition(inf: any) {
+    HideCursor();
+    setValues(inf);
+  }
+
   function closeTopic() {
     const topicOverlay = document.querySelector("." + topic.overlay);
     gsap.to("." + topic.content, {
@@ -145,7 +151,13 @@ function HomePage() {
     });
   }
 
-  function generateImg(src: string, alt: string) {
+  function generateImg(
+    src: string,
+    alt: string,
+    onLoad: () => void = function () {
+      console.log("loaded");
+    }
+  ) {
     return (
       <Image
         width={500}
@@ -155,6 +167,7 @@ function HomePage() {
         src={src}
         alt={alt}
         className={topic.img}
+        onLoad={onLoad}
       ></Image>
     );
   }
@@ -165,7 +178,6 @@ function HomePage() {
         <title>Project Title</title>
       </Head>
 
-      <Header />
       <Cursor />
 
       <div className={topic.overlay}>
