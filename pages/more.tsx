@@ -1,7 +1,7 @@
 import React from "react";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 
-const Reports = () => {
+const More = () => {
   return (
     <>
       <Cursor />
@@ -13,4 +13,4 @@ const Reports = () => {
   );
 };
 
-export default Reports;
+export default More;
