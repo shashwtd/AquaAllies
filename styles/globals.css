@@ -12,11 +12,12 @@ body {
   font-family: 'sharlee';
   font-size: 14px !important;
   user-select: none;
+  background-color: var(--secondary);
 }
 
 :root {
   --primary: #000000;
-  --secondary: #f2f1f0;
+  --secondary: #eae5e1;
   --text: #2d2c2c; 
   --bluish: #494c4d;
 
@@ -37,6 +38,16 @@ a {
     font-weight: 600;
 }
 
+.glitch {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
 
 
 

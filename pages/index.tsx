@@ -75,15 +75,12 @@ function HomePage() {
     }
     if (img) {
       ReactDOM.render(
-        generateImg(data.image, data.caption, okay),
+        generateImg(data.image, data.caption),
         imageContainerRef.current
       );
     }
 
-    function okay() {
-      proceed(["#" + title.id, "#" + desc.id, "#" + img.id]);
-    }
-
+    proceed(["#" + title.id, "#" + desc.id, "#" + img.id]);
   }
 
   function proceed(elms: any) {
@@ -151,13 +148,7 @@ function HomePage() {
     });
   }
 
-  function generateImg(
-    src: string,
-    alt: string,
-    onLoad: () => void = function () {
-      console.log("loaded");
-    }
-  ) {
+  function generateImg(src: string, alt: string) {
     return (
       <Image
         width={500}
@@ -167,7 +158,6 @@ function HomePage() {
         src={src}
         alt={alt}
         className={topic.img}
-        onLoad={onLoad}
       ></Image>
     );
   }
