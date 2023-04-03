@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
-import css from "@/styles/goals.module.css";
+import styles from "@/styles/Goals.module.css";
 import Image from "next/image";
 import Carausel from "@/components/carausel/Carausel";
 
@@ -12,8 +12,8 @@ const Goals = () => {
 
       <main>
         {/* Generate sample article */}
-        <article className={css.article}>
-          <div className={css.article__content}>
+        <article className={styles.article}>
+          <div className={styles.article__content}>
             <h1> The 2030 Agenda — Sustainable Development Goals</h1>
             <p>
               The Sustainable Development Goals (SDGs, also referred to as the
