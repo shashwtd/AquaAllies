@@ -3,9 +3,20 @@ import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Header from "@/components/header/Header";
 import { useRouter } from "next/router";
+import Lenis from "@studio-freight/lenis";
 
 export default function App({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.4,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    });
+    function raf(time: any) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+
+    requestAnimationFrame(raf);
     const scroll = document.getElementById("scroll");
     window.addEventListener("scroll", () => {
       let scrollPerc =
