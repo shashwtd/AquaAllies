@@ -1,9 +1,26 @@
 import styles from "./Carausel.module.css";
 import Image from "next/image";
+import { useEffect } from "react";
 
 const Carausel = () => {
+  useEffect(() => {
+    const next = document.querySelector("." + styles.next);
+    const prev = document.querySelector("." + styles.prev);
+    const carausel = document.querySelector("." + styles.carausel__wrapper);
+
+    if (next && prev && carausel) {
+      next.addEventListener("click", () => {
+        carausel.scrollLeft += 500;
+      });
+      prev.addEventListener("click", () => {
+        carausel.scrollLeft -= 500;
+      });
+    }
+  }, []);
+
   return (
     <div className={styles.carausel} cursor-class="hide">
+      <div className={styles.prev}>&#10094;</div>
       <div className={styles.carausel__wrapper} cursor-class="hide">
         {[...Array(17)].map((_, i) => (
           <div className={styles.carausel__item} key={i} cursor-class="hide">
@@ -26,6 +43,7 @@ const Carausel = () => {
           </div>
         ))}
       </div>
+      <div className={styles.next}>&#10095;</div>
     </div>
   );
 };
