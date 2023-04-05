@@ -1,7 +1,8 @@
 import React from "react";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
+import styles from "@/styles/Solutions.module.css";
 
-const More = () => {
+const Solutions = () => {
   return (
     <>
       <Cursor />
@@ -13,4 +14,4 @@ const More = () => {
   );
 };
 
-export default More;
+export default Solutions;

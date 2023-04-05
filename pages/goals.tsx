@@ -2,8 +2,8 @@
 import React from "react";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import styles from "@/styles/Goals.module.css";
-import Image from "next/image";
 import Carausel from "@/components/carausel/Carausel";
+import Timeline from "@/components/timeline/Timeline";
 
 const Goals = () => {
   return (
@@ -105,6 +105,7 @@ const Goals = () => {
               specifically, 8 targets need to be attained by 2030:
             </p>
           </div>
+          <Timeline />
         </article>
       </main>
     </>

@@ -17,8 +17,8 @@ export default function Header() {
         <Link href="/reports">
           <span cursor-class="overlay">reports</span>
         </Link>
-        <Link href="/more">
-          <span cursor-class="overlay">more</span>
+        <Link href="/solutions">
+          <span cursor-class="overlay">solutions</span>
         </Link>
       </div>
       <div className={styles.action}>
