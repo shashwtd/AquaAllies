@@ -37,6 +37,7 @@ const Carausel = () => {
                   height={320}
                   quality={100}
                   className={styles.carausel__image}
+                  priority
                 />
               </div>
             </a>

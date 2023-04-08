@@ -19,8 +19,8 @@ const TimelineTarget = (prop: { iter: string; desc: string }) => {
       ease: "power4.out",
       scrollTrigger: {
         trigger: timeline.current,
-        start: "top 90%",
-        end: "bottom 90%",
+        start: "top 80%",
+        end: "bottom 80%",
         scrub: true,
       },
     });
@@ -32,8 +32,8 @@ const TimelineTarget = (prop: { iter: string; desc: string }) => {
       ease: "power4.out",
       scrollTrigger: {
         trigger: timeline.current,
-        start: "top 80%",
-        end: "bottom 80%",
+        start: "top 75%",
+        end: "bottom 75%",
         scrub: true,
         onEnter: () => {
           gsap.to("#timelineNum span", {
