@@ -4,6 +4,7 @@ import type { AppProps } from "next/app";
 import Header from "@/components/header/Header";
 import { useRouter } from "next/router";
 import Lenis from "@studio-freight/lenis";
+import Curtain from "@/components/curtain/Curtain";
 
 export default function App({ Component, pageProps }: AppProps) {
   React.useEffect(() => {
@@ -30,6 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
   return (
     <React.StrictMode>
+      <Curtain />
       <div className="page-wrapper">
         <Header />
         <div className="scrollBar" id="scroll"></div>

@@ -4,6 +4,7 @@ import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import styles from "@/styles/Goals.module.css";
 import Carausel from "@/components/carausel/Carausel";
 import Timeline from "@/components/timeline/Timeline";
+import { ThrowCurtain } from "@/components/curtain/Curtain";
 
 const Goals = () => {
   return (
@@ -14,7 +15,7 @@ const Goals = () => {
         {/* Generate sample article */}
         <article className={styles.article}>
           <div className={styles.article__content}>
-            <h1> The 2030 Agenda — Sustainable Development Goals</h1>
+            <h1 onClick={ThrowCurtain}> The 2030 Agenda — Sustainable Development Goals</h1>
             <p>
               The Sustainable Development Goals (SDGs, also referred to as the
               Global Goals) are the blueprint to achieve a better and more
