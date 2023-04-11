@@ -9,7 +9,9 @@ const CustomLink = (prop: { href: any; children: any }) => {
     const curtainCallback = () => {
       router.push(prop.href);
     };
-
+    
+    // Check to see if the link is the active page
+    if (router.pathname === prop.href) return;
     ThrowCurtain(curtainCallback);
   };
 
