@@ -20,16 +20,14 @@ function ThrowCurtain(CurtainThrown: any) {
 
 function RemoveCurtain(CurtainRemoved: any) {
   const curtain = document.querySelector("." + styles.curtain) as HTMLElement;
+  const waiter = document.querySelector("." + styles.waiter);
+  if (waiter) gsap.set(waiter, {delay: 0.4, opacity: 0 });
   gsap.to(curtain, {
     delay: 0.8,
     duration: 0.8,
     ease: "power2.in",
     transform: "translateX(100vw)",
     scaleX: 0.2,
-    onStart: () => {
-      const waiter = document.querySelector("." + styles.waiter);
-      if (waiter) gsap.set(waiter, { opacity: 0 });
-    },
     onComplete: () => {
       if (curtain) gsap.set(curtain, {x: "-100vw", scaleX: 1});
       if (CurtainRemoved) CurtainRemoved();
