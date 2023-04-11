@@ -8,11 +8,24 @@ import { RemoveCurtain } from "@/components/curtain/Curtain";
 
 const Goals = () => {
   React.useEffect(() => {
-    const page = document.getElementById("goalsPage");
-    page?.addEventListener("load", () => {
-      RemoveCurtain(ResetCursor);
-    });
+    const handleLoad = () => RemoveCurtain(ResetCursor);
+  const images = document.querySelectorAll("img");
+  let imagesToLoad = images.length;
+  const checkImagesLoaded = () => {
+    imagesToLoad--;
+    if (imagesToLoad === 0) handleLoad();
+  };
+  images.forEach(image => {
+    if (image.complete) checkImagesLoaded();
+    else image.addEventListener("load", checkImagesLoaded);
+  });
+  return () => {
+    window.removeEventListener("load", handleLoad);
+    images.forEach(image => image.removeEventListener("load", checkImagesLoaded));
+  };
+
   }, []);
+  
 
   return (
     <>

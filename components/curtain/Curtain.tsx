@@ -30,7 +30,7 @@ function RemoveCurtain(CurtainRemoved: any) {
     scaleX: 0.2,
     onComplete: () => {
       if (curtain) gsap.set(curtain, {x: "-100vw", scaleX: 1});
-      if (CurtainRemoved) CurtainRemoved();
+      if (CurtainRemoved instanceof Function) CurtainRemoved();
     },
   });
 }

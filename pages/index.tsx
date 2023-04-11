@@ -25,10 +25,6 @@ function HomePage() {
   };
 
   useEffect(() => {
-    const page = document.getElementById("mainPage");
-    page?.addEventListener("load", () => {
-      RemoveCurtain(ResetCursor);
-    });
     const title = titleRef.current;
     if (title) {
       gsap.to(title, {
@@ -51,6 +47,23 @@ function HomePage() {
         },
       });
     }
+    const handleLoad = () => RemoveCurtain(ResetCursor);
+    const images = document.querySelectorAll("img");
+    let imagesToLoad = images.length;
+    const checkImagesLoaded = () => {
+      imagesToLoad--;
+      if (imagesToLoad === 0) handleLoad();
+    };
+    images.forEach((image) => {
+      if (image.complete) checkImagesLoaded();
+      else image.addEventListener("load", checkImagesLoaded);
+    });
+    return () => {
+      window.removeEventListener("load", handleLoad);
+      images.forEach((image) =>
+        image.removeEventListener("load", checkImagesLoaded)
+      );
+    };
   }, []);
 
   function setValues(data: any) {
