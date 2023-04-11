@@ -16,7 +16,6 @@ function Content(prop: {
   clickback: (data: {}) => void;
 }) {
   React.useEffect(() => {
-    console.log("Content Rendered -> " + prop.tag);
     ScrollTrigger.refresh();
     const lhr = document.querySelectorAll(`.${styles.intro}`);
     lhr.forEach((el, index) => {

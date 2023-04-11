@@ -7,6 +7,8 @@ import Lenis from "@studio-freight/lenis";
 import Curtain from "@/components/curtain/Curtain";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
   React.useEffect(() => {
     const lenis = new Lenis({
       duration: 1.4,
@@ -26,8 +28,6 @@ export default function App({ Component, pageProps }: AppProps) {
       scroll!.style.setProperty("--scroll", `${scrollPerc}%`);
     });
   }, []);
-
-  const router = useRouter();
 
   return (
     <React.StrictMode>

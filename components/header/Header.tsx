@@ -1,25 +1,25 @@
 import styles from "./Header.module.css";
-import Link from "next/link";
 import { HideCursor } from "../cursor/Cursor";
+import Pass from "@/components/pass/Pass";
 
 export default function Header() {
   return (
     <div className={styles.header}>
-      <Link href="/">
+      <Pass href="/">
         <h1 className={styles.headerTitle} cursor-class="subtle">
           Wotah.
         </h1>
-      </Link>
+      </Pass>
       <div className={styles.options}>
-        <Link href="/goals">
+        <Pass href="/goals">
           <span cursor-class="overlay">goals</span>
-        </Link>
-        <Link href="/reports">
+        </Pass>
+        <Pass href="/reports">
           <span cursor-class="overlay">reports</span>
-        </Link>
-        <Link href="/solutions">
+        </Pass>
+        <Pass href="/solutions">
           <span cursor-class="overlay">solutions</span>
-        </Link>
+        </Pass>
       </div>
       <div className={styles.action}>
         <span

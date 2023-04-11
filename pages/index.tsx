@@ -5,12 +5,12 @@ import { gsap } from "gsap";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { TextPlugin } from "gsap/dist/TextPlugin";
 import { useEffect, useRef } from "react";
-import Lenis from "@studio-freight/lenis";
 import Content from "@/components/content/Content";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import React from "react";
 import Image from "next/image";
 import ReactDOM from "react-dom";
+import { RemoveCurtain } from "@/components/curtain/Curtain";
 
 function HomePage() {
   gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -25,6 +25,7 @@ function HomePage() {
   };
 
   useEffect(() => {
+    RemoveCurtain(ResetCursor);
     const title = titleRef.current;
     if (title) {
       gsap.to(title, {

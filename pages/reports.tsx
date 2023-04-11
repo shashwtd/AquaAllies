@@ -1,7 +1,11 @@
 import React from "react";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
+import { RemoveCurtain } from "@/components/curtain/Curtain";
 
 const Reports = () => {
+  React.useEffect(() => {
+    RemoveCurtain(ResetCursor);
+  }, []);
   return (
     <>
       <Cursor />

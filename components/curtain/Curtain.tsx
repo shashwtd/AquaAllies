@@ -2,30 +2,35 @@ import styles from "./Curtain.module.css";
 import React from "react";
 import { gsap } from "gsap";
 
-function ThrowCurtain() {
+function ThrowCurtain(CurtainThrown: any) {
   const curtain = document.querySelector("." + styles.curtain) as HTMLElement;
+  if (curtain) gsap.set(curtain, { x: "-100vw" , scaleX: 0.3, transformOrigin: "right"});
   gsap.to(curtain, {
     duration: 0.6,
     transform: "translateX(0)",
-    ease: "power2.out",
+    scale: 1,
+    ease: "power2.in",
     onComplete: () => {
       const waiter = document.querySelector("." + styles.waiter);
       gsap.set(waiter, { opacity: 0.7 });
+      CurtainThrown();
     },
   });
 }
 
-function RemoveCurtain() {
+function RemoveCurtain(CurtainRemoved: any) {
   const curtain = document.querySelector("." + styles.curtain) as HTMLElement;
   const waiter = document.querySelector("." + styles.waiter);
   if (waiter) gsap.set(waiter, { opacity: 0 });
   gsap.to(curtain, {
+    delay: 0.8,
     duration: 0.8,
     ease: "power2.in",
     transform: "translateX(100vw)",
     scaleX: 0.2,
     onComplete: () => {
       if (curtain) gsap.set(curtain, {x: "-100vw", scaleX: 1});
+      if (CurtainRemoved) CurtainRemoved();
     },
   });
 }
