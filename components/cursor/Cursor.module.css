@@ -10,8 +10,8 @@
 
 @media (hover: hover) and (pointer: fine) {
   .cursorCircle {
-    width: 4em;
-    height: 4em;
+    width: 2em;
+    height: 2em;
     margin-top: -50%;
     margin-left: -50%;
     border-radius: 50%;
@@ -28,8 +28,8 @@
   }
 
   .cursor[state="arrow"] .cursorCircle {
-    width: 128px;
-    height: 128px;
+    width: 140px;
+    height: 140px;
     background-color: #1f1f1fbb;
     border-color: #373737;
     background-image: url("/assets/arrow.svg");
@@ -39,9 +39,9 @@
   }
 
   .cursor[state="grow"] .cursorCircle {
-    width: 9em;
-    height: 9em;
-    background-color: #351515;
+    width: 7em;
+    height: 7em;
+    background-color: #470c0c;
     border-color: #153235;
   }
 
