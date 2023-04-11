@@ -59,7 +59,6 @@ function HomePage() {
       else image.addEventListener("load", checkImagesLoaded);
     });
     return () => {
-      window.removeEventListener("load", handleLoad);
       images.forEach((image) =>
         image.removeEventListener("load", checkImagesLoaded)
       );

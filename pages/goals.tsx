@@ -9,23 +9,22 @@ import { RemoveCurtain } from "@/components/curtain/Curtain";
 const Goals = () => {
   React.useEffect(() => {
     const handleLoad = () => RemoveCurtain(ResetCursor);
-  const images = document.querySelectorAll("img");
-  let imagesToLoad = images.length;
-  const checkImagesLoaded = () => {
-    imagesToLoad--;
-    if (imagesToLoad === 0) handleLoad();
-  };
-  images.forEach(image => {
-    if (image.complete) checkImagesLoaded();
-    else image.addEventListener("load", checkImagesLoaded);
-  });
-  return () => {
-    window.removeEventListener("load", handleLoad);
-    images.forEach(image => image.removeEventListener("load", checkImagesLoaded));
-  };
-
+    const images = document.querySelectorAll("img");
+    let imagesToLoad = images.length;
+    const checkImagesLoaded = () => {
+      imagesToLoad--;
+      if (imagesToLoad === 0) handleLoad();
+    };
+    images.forEach((image) => {
+      if (image.complete) checkImagesLoaded();
+      else image.addEventListener("load", checkImagesLoaded);
+    });
+    return () => {
+      images.forEach((image) =>
+        image.removeEventListener("load", checkImagesLoaded)
+      );
+    };
   }, []);
-  
 
   return (
     <>
@@ -119,9 +118,9 @@ const Goals = () => {
               increase fourfold. Achieving these targets would save 829,000
               people annually, who die from diseases directly attributable to
               unsafe water, inadequate sanitation and poor hygiene practices.
-              This goal is to ensure availability
-              and sustainable management of water and sanitation for all. More
-              specifically, 8 targets need to be attained by 2030:
+              This goal is to ensure availability and sustainable management of
+              water and sanitation for all. More specifically, 8 targets need to
+              be attained by 2030:
             </p>
           </div>
           <Timeline />
