@@ -25,7 +25,10 @@ function HomePage() {
   };
 
   useEffect(() => {
-    RemoveCurtain(ResetCursor);
+    const page = document.getElementById("mainPage");
+    page?.addEventListener("load", () => {
+      RemoveCurtain(ResetCursor);
+    });
     const title = titleRef.current;
     if (title) {
       gsap.to(title, {
@@ -193,7 +196,7 @@ function HomePage() {
         </div>
       </div>
 
-      <main>
+      <main id="mainPage">
         <div className={styles.page} page-index="1" id="pageLanding">
           <div></div>
           <div className={styles.landing}>

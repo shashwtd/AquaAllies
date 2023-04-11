@@ -4,13 +4,16 @@ import { RemoveCurtain } from "@/components/curtain/Curtain";
 
 const Solutions = () => {
   React.useEffect(() => {
-    RemoveCurtain(ResetCursor);
+    const page = document.getElementById("solsPage");
+    page?.addEventListener("load", () => {
+      RemoveCurtain(ResetCursor);
+    });
   }, []);
   return (
     <>
       <Cursor />
 
-      <main>
+      <main id="solsPage">
         <h1>Main</h1>
       </main>
     </>

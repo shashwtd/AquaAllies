@@ -43,6 +43,10 @@
   transform: translateY(-18rem);
 }
 
+.num span:hover {
+  opacity: 1;
+}
+
 .timeline__items {
   position: relative;
   width: 50%;
@@ -78,6 +82,13 @@
   box-shadow: 2px 10px 30px -5px rgba(0, 0, 0, 0.2);
   border: 2px solid #1112;
   cursor: cell;
+  transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.timeline__content:hover {
+  box-shadow: 2px 10px 30px -5px rgba(0, 0, 0, 0.4);
+  border: 2px solid #1112;
+  filter: brightness(.5);
 }
 
 .timeline__content h2 {

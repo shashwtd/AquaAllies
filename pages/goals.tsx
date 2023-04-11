@@ -8,15 +8,16 @@ import { RemoveCurtain } from "@/components/curtain/Curtain";
 
 const Goals = () => {
   React.useEffect(() => {
-    RemoveCurtain(ResetCursor);
+    const page = document.getElementById("goalsPage");
+    page?.addEventListener("load", () => {
+      RemoveCurtain(ResetCursor);
+    });
   }, []);
 
   return (
     <>
       <Cursor />
-
-      <main>
-        {/* Generate sample article */}
+      <main id="goalsPage">
         <article className={styles.article}>
           <div className={styles.article__content}>
             <h1> The 2030 Agenda — Sustainable Development Goals</h1>

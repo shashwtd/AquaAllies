@@ -58,7 +58,7 @@ const TimelineTarget = (prop: { iter: string; desc: string }) => {
       <div
         className={styles.timeline__content}
         ref={timelineItems}
-        cursor-class="grow"
+        cursor-class="overlay"
       >
         <h2>Target {prop.iter} —</h2>
         <p>{prop.desc}</p>
