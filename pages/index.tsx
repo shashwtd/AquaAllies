@@ -148,6 +148,7 @@ function HomePage() {
         src={src}
         alt={alt}
         className={topic.img}
+        priority
       ></Image>
     );
   }
