@@ -24,8 +24,14 @@ body {
   --hh: 6em;
 }
 
+#appWrapper {
+  display: flex;
+  justify-content: center;
+}
+
 main {
   width: 100vw;
+  max-width: 1920px;
   min-height: 100vh; 
   height: auto;
   background-color: var(--secondary);

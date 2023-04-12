@@ -4,7 +4,6 @@
   font-size: 1.8em;
 }
 
-
 .article .article__content {
   font-size: 1em;
   padding: 0;
@@ -25,7 +24,7 @@
 .article__content p {
   margin-bottom: 1em;
   font-size: 0.7em;
-  font-family: 'HK';
+  font-family: "HK";
 }
 
 .article__image {
@@ -38,4 +37,3 @@
   border-radius: 10px;
   position: relative;
 }
-

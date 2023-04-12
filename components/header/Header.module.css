@@ -8,11 +8,19 @@
     background-color: var(--secondary);
     color: var(--text);
     
+    padding: 0 4em;
+    transition: 0.2s ease-out;
+    display: flex;
+    justify-content: center;
+}
+
+.inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    transition: 0.2s ease-out;
-    padding: 0 4em;
+    width: 100%;
+    height: 100%;
+    max-width: 1920px;
 }
 
 .header::after {

@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <React.StrictMode>
       <Curtain />
-      <div className="page-wrapper">
+      <div id="appWrapper">
         <Header />
         <div className="scrollBar" id="scroll"></div>
         <Component {...pageProps} />
