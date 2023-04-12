@@ -10,11 +10,15 @@ const Timeline = () => {
   const timeline = useRef(null);
   const timelineItems = useRef(null);
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    
+  }, []);
 
   return (
     <div className={styles.timeline}>
       <div className={styles.timeline__container} ref={timeline}>
+        <div className={styles.timeline__path}></div>
+        <div className={styles.timeline__blur}></div>
         <div className={styles.num} id="timelineNum">
           <span>1</span>
         </div>
