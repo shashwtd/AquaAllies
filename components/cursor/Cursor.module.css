@@ -39,9 +39,9 @@
   }
 
   .cursor[state="grow"] .cursorCircle {
-    width: 7em;
-    height: 7em;
-    background-color: #470c0c;
+    width: 12em;
+    height: 12em;
+    background-color: #d5d5d5;
     border-color: #153235;
   }
 

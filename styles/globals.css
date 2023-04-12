@@ -24,6 +24,15 @@ body {
   --hh: 6em;
 }
 
+:root {
+  --primary: #dcdcdc;
+  --secondary: #c6d0e1;
+  --text: #2e2d2d; 
+  --bluish: #494c4d;
+  --curtain: #d5c9bf;
+  --hh: 6em;
+}
+
 #appWrapper {
   display: flex;
   justify-content: center;
@@ -90,7 +99,7 @@ a {
 
 ::selection {
   opacity: 0.8;
-  background-color: #1112;
+  background-color: rgba(9, 9, 9, 0.256);
   border-radius: 20px;
 }
 
