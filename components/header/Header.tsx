@@ -18,8 +18,8 @@ export default function Header() {
           <Pass href="/reports">
             <span cursor-class="overlay">reports</span>
           </Pass>
-          <Pass href="/solutions">
-            <span cursor-class="overlay">solutions</span>
+          <Pass href="/contribute">
+            <span cursor-class="overlay">contribute</span>
           </Pass>
         </div>
         <div className={styles.action}>
@@ -28,7 +28,7 @@ export default function Header() {
             cursor-class="overlay"
             onClick={HideCursor}
           >
-            Contribute
+            Showreel
             <span>→</span>
           </span>
         </div>

@@ -2,7 +2,7 @@ import React from "react";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import { RemoveCurtain } from "@/components/curtain/Curtain";
 
-const Solutions = () => {
+const Contribute = () => {
   React.useEffect(() => {
     const handleLoad = () => RemoveCurtain(ResetCursor);
     const images = document.querySelectorAll("img");
@@ -32,4 +32,4 @@ const Solutions = () => {
   );
 };
 
-export default Solutions;
+export default Contribute;

@@ -148,3 +148,41 @@
 .content:nth-child(2n) .introImg {
   transform-origin: bottom right;
 }
+
+
+/* Responsiveness */
+
+@media (max-width: 768px) {
+  .content {
+    padding: 0 1em;
+  }
+  .content .intro {
+    font-size: 2.5em;
+  }
+  .content .introImgCont {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+  .content .introImgCont::after {
+    bottom: 5%;
+  }
+  .content .introImgCont p {
+    font-size: 0.8em;
+  }
+  .content .introImg {
+    width: 100%;
+    height: auto;
+  }
+  .content .introImgBox {
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+  }
+  .content .introImgBox::after {
+    width: calc(100% + 5px);
+    height: calc(100% + 5px);
+  }
+
+  .content .introImgCont::after {
+    display: none;
+  }
+}

@@ -4,7 +4,7 @@ import { TextPlugin } from "gsap/dist/TextPlugin";
 import React from "react";
 import Image from "next/image";
 import styles from "./Content.module.css";
-import { useState } from "react";
+import { MediaWidth } from "@/scripts/mediaQueries";
 
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
 function Content(prop: {
@@ -17,27 +17,30 @@ function Content(prop: {
 }) {
   React.useEffect(() => {
     ScrollTrigger.refresh();
-    const lhr = document.querySelectorAll(`.${styles.intro}`);
-    lhr.forEach((el, index) => {
-      if (index % 2 == 0) {
-        gsap.set(el, { x: 100 });
-      } else {
-        gsap.set(el, { x: -100 });
-      }
-      gsap.set(el, { opacity: 0.3 });
-      gsap.to(el, {
-        opacity: 1,
-        x: 0,
-        scrollTrigger: {
-          trigger: el,
-          start: "top 100%",
-          end: "bottom 80%",
-          scrub: true,
-        },
+    var media768 = MediaWidth(768);
+    if (!media768) {
+      console.log("768px or less");
+      const lhr = document.querySelectorAll(`.${styles.intro}`);
+      lhr.forEach((el, index) => {
+        if (index % 2 == 0) {
+          gsap.set(el, { x: 100 });
+        } else {
+          gsap.set(el, { x: -100 });
+        }
+        gsap.set(el, { opacity: 0.3 });
+        gsap.to(el, {
+          opacity: 1,
+          x: 0,
+          scrollTrigger: {
+            trigger: el,
+            start: "top 100%",
+            end: "bottom 80%",
+            scrub: true,
+          },
+        });
       });
-    });
-
-    const contents = document.querySelectorAll(`.${styles.content}`);
+      
+      const contents = document.querySelectorAll(`.${styles.content}`);
     contents.forEach((el) => {
       gsap.to(el, {
         y: -100,
@@ -49,7 +52,8 @@ function Content(prop: {
         },
       });
     });
-
+  }
+    
     const imgELms = document.querySelectorAll(`.${styles.introImgCont}`);
     imgELms.forEach((el) => {
       gsap.set(el, { opacity: 0.3 });
@@ -90,15 +94,13 @@ function Content(prop: {
   });
 
   function handleLinkClick() {
-    prop.clickback(
-      {
-        tag: prop.tag,
-        text: prop.text,
-        image: prop.image,
-        caption: prop.caption,
-        long: prop.long,
-      },
-    );
+    prop.clickback({
+      tag: prop.tag,
+      text: prop.text,
+      image: prop.image,
+      caption: prop.caption,
+      long: prop.long,
+    });
   }
 
   return (
@@ -117,7 +119,7 @@ function Content(prop: {
               handleLinkClick();
             }}
           ></div>
-          <div className={styles.introImgX} >
+          <div className={styles.introImgX}>
             <Image
               src={prop.image}
               alt={prop.caption}

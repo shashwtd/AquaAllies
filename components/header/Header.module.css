@@ -105,3 +105,30 @@
 .action .actionButton:hover {
     background: #2221;
 }
+
+@media (max-width: 768px) {
+    .header {
+        padding: 0 2em;
+    }
+
+    .headerTitle {
+        font-size: 1.4em;
+    }
+
+    .options {
+        gap: 1.2em;
+    }
+
+    .options span {
+        font-size: 1em;
+    }
+
+    .action .actionButton {
+        padding: .3em .8em;
+        font-size: .9em;
+    }
+
+    .action .actionButton span {
+        margin: 0 0.2em 0 0.4em;
+    }
+}
