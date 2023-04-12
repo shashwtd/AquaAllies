@@ -1,6 +1,7 @@
 import styles from "./Carausel.module.css";
 import Image from "next/image";
 import { useEffect } from "react";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 const Carausel = () => {
   useEffect(() => {
@@ -21,7 +22,7 @@ const Carausel = () => {
   return (
     <div className={styles.carausel} cursor-class="hide">
       <div className={styles.prev}>&#10094;</div>
-      <div className={styles.carausel__wrapper} cursor-class="hide">
+      <ScrollContainer className={styles.carausel__wrapper} cursor-class="hide">
         {[...Array(17)].map((_, i) => (
           <div className={styles.carausel__item} key={i} cursor-class="hide">
             <a
@@ -43,7 +44,7 @@ const Carausel = () => {
             </a>
           </div>
         ))}
-      </div>
+      </ScrollContainer>
       <div className={styles.next}>&#10095;</div>
     </div>
   );

@@ -1,7 +1,6 @@
 .carausel {
   width: 100%;
   height: calc(var(--box-size) + 0.5em);
-  overflow: hidden;
   background-color: #0002;
   margin-top: 1em;
   border-radius: 10px;
@@ -12,13 +11,12 @@
 }
 
 .carausel__wrapper {
-  display: flex;
+  width: 100%;
   height: var(--box-size);
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  display: flex;
   border-radius: 10px;
   user-select: none;
+  overflow-x: scroll;
 }
 
 .carausel__item {
@@ -69,6 +67,7 @@
   width: 100%;
   object-fit: contsain;
   transition: all 0.3s ease;
+  pointer-events: none;
 }
 
 .carausel__image:hover {
