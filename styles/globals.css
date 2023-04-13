@@ -12,7 +12,7 @@ body {
   font-family: 'sharlee';
   font-size: 14px !important;
   user-select: none;
-  background-color: var(--secondary);
+  background: var(--secondary);
 }
 
 :root {
@@ -26,10 +26,25 @@ body {
 
 :root {
   --primary: #dcdcdc;
-  --secondary: #c6d0e1;
+  --secondary: #D4F1F9;
   --text: #2e2d2d; 
   --bluish: #494c4d;
   --curtain: #d5c9bf;
+  --content-box: #006994;
+  --target-bg: #a0c3d28b;
+  --hh: 6em;
+}
+:root {
+  --primary: #EAE0DA;
+  --secondary: #D6E6E9;
+  --secondary-gradient: linear-gradient(180deg, #d9e8ea 0%, #a8d0de 100%);
+  --text: #2C3333; 
+  --bluish: #494c4d;
+  --curtain: #a4c5cb;
+  --content-box: #256D85;
+  --target-bg: #a0c3d28b;
+  --topic-bg: #d1dfe1;
+  --carausel-blue: #8dc7e1;
   --hh: 6em;
 }
 
@@ -43,8 +58,23 @@ main {
   max-width: 1920px;
   min-height: 100vh; 
   height: auto;
-  background-color: var(--secondary);
+  background: var(--secondary-gradient);
   scroll-behavior: smooth;
+}
+
+main::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--secondary-gradient);
+  z-index: 2;
+}
+
+main > * {
+  z-index: 5;
 }
 
 a {

@@ -1,6 +1,8 @@
 import styles from "./Header.module.css";
 import { HideCursor } from "../cursor/Cursor";
 import Pass from "@/components/pass/Pass";
+import { useEffect } from "react";
+import { gsap } from "gsap";
 
 export default function Header() {
   return (

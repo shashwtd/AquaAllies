@@ -2,6 +2,7 @@
   padding: 10em 5em;
   padding-bottom: 0;
   font-size: 1.8em;
+  position: relative;
 }
 
 .article .article__content {

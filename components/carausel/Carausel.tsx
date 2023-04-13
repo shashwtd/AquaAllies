@@ -11,10 +11,16 @@ const Carausel = () => {
 
     if (next && prev && carausel) {
       next.addEventListener("click", () => {
-        carausel.scrollLeft += 500;
+        carausel.scrollTo({
+          left: carausel.scrollLeft + 500,
+          behavior: "smooth",
+        });
       });
       prev.addEventListener("click", () => {
-        carausel.scrollLeft -= 500;
+        carausel.scrollTo({
+          left: carausel.scrollLeft - 500,
+          behavior: "smooth",
+        });
       });
     }
   }, []);
