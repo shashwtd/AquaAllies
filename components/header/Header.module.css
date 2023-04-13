@@ -68,14 +68,15 @@
     font-weight: 600;
     opacity: .8;
     cursor: pointer;
-    transition: 0.2s ease-out;
-    padding: 0.2em 0.4em;
+    transition: 0.1s ease;
+    padding: 0.4em 0.6em;
     border-radius: 10px;
 }
 
 .options span:hover {
-    opacity: .9;
+    opacity: 1;
     background-color: #2221;
+    filter: brightness(.2);
 }
 
 .action .actionButton {
@@ -104,6 +105,7 @@
 
 .action .actionButton:hover {
     background: #2221;
+    opacity: 1;
 }
 
 @media (max-width: 768px) {

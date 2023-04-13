@@ -14,6 +14,9 @@ export default function Header() {
           </h1>
         </Pass>
         <div className={styles.options}>
+          <Pass href="/">
+            <span cursor-class="overlay">home</span>
+          </Pass>
           <Pass href="/goals">
             <span cursor-class="overlay">goals</span>
           </Pass>
