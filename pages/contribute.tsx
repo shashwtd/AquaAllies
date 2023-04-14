@@ -1,6 +1,8 @@
+/* eslint-disable react/no-unescaped-entities */
 import React from "react";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import { RemoveCurtain } from "@/components/curtain/Curtain";
+import styles from "@/styles/Contribute.module.css";
 
 const Contribute = () => {
   React.useEffect(() => {
@@ -24,9 +26,22 @@ const Contribute = () => {
   return (
     <>
       <Cursor />
-
-      <main id="solsPage">
-        <h1>Main</h1>
+      <main id="goalsPage">
+        <article className={styles.article}>
+          <div className={styles.article__content} contentEditable>
+            <h1>Here's how to Contribute!</h1>
+            <p>
+              We are a community of people who are passionate about the SDGs and
+              want to make a difference. We are looking for people who are
+              passionate about the SDGs and want to make a difference. We are
+              looking for people who are passionate about the SDGs and want to
+              make a difference. We are looking for people who are passionate
+              about the SDGs and want to make a difference. We are looking for
+              people who are passionate about the SDGs and want to make a
+              difference. We are.
+            </p>
+          </div>
+        </article>
       </main>
     </>
   );

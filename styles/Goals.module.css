@@ -25,19 +25,8 @@
 .article__content p {
   margin-bottom: 1em;
   font-size: 0.72em;
-  
-  font-family: "sharlee";
-}
 
-.article__image {
-  margin: 1em 0;
-  width: 100%;
-  height: auto;
-  max-width: 800px;
-  border-radius: 5px;
-  filter: grayscale(0.2);
-  border-radius: 10px;
-  position: relative;
+  font-family: "sharlee";
 }
 
 
