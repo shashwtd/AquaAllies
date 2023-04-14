@@ -65,10 +65,10 @@ function HomePage() {
         scrollTrigger: {
           trigger: videoPreview,
           start: `top 21px`,
-          end: "top -600px",
+          end: "top -500px",
           scrub: true,
         },
-        y: 300,
+        y: 200,
         onComplete: () => {
           console.log("OKAY");
         },
@@ -249,7 +249,7 @@ function HomePage() {
 
         <div className={styles.page} page-index="2" id="pageReel">
           <div id="videoPreview" className={styles.vid} cursor-class="hide">
-              <div className={styles.vidTitle}>Watch Showreel</div>
+            <div className={styles.vidTitle}>Watch Showreel</div>
           </div>
         </div>
 

@@ -24,8 +24,9 @@
 
 .article__content p {
   margin-bottom: 1em;
-  font-size: 0.7em;
-  font-family: "HK";
+  font-size: 0.72em;
+  
+  font-family: "sharlee";
 }
 
 .article__image {
