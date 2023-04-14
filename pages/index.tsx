@@ -47,6 +47,26 @@ function HomePage() {
         },
       });
     }
+
+    const videoPreview = document.querySelector("#videoPreview");
+    if (videoPreview) {
+      gsap.set(videoPreview, {
+        scaleX: 0.5,
+        transformOrigin: "center",
+      });
+
+      gsap.to(videoPreview, {
+        scrollTrigger: {
+          trigger: videoPreview,
+          start: `top bottom`,
+          end: "top 20%",
+          scrub: true,
+        },
+        scaleX: 1,
+        y: -200,
+      });
+    }
+
     const handleLoad = () => RemoveCurtain(ResetCursor);
     const images = document.querySelectorAll("img");
     let imagesToLoad = images.length;
@@ -218,7 +238,12 @@ function HomePage() {
             </div>
           </div>
         </div>
-        <div className={styles.page} page-index="2" id="pageIntro">
+
+        <div className={styles.page} page-index="2" id="pageReel">
+          <div id="videoPreview" className={styles.vid}></div>
+        </div>
+
+        <div className={styles.page} page-index="3" id="pageIntro">
           <Content
             tag="Water Pollution"
             image="/images/beach0.jpg"

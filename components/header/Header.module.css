@@ -1,17 +1,23 @@
 .header {
-    position: fixed;
+    position: absolute;
     width: 100vw;
     height: var(--hh);
-    top: 0;
     z-index: 10;
-
-    background-color: var(--secondary);
+    background-color: transparent;
+    top: 0;
+    
     color: var(--text);
     
     padding: 0 4em;
     transition: 0.2s ease-out;
     display: flex;
     justify-content: center;
+}
+
+.header[sticky] {
+    position: sticky;
+    top: 0;
+    background-color: var(--secondary);
 }
 
 .inner {

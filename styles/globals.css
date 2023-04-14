@@ -36,8 +36,8 @@ body {
 }
 :root {
   --primary: #EAE0DA;
-  --secondary: #D6E6E9;
-  --secondary-gradient: linear-gradient(180deg, #d9e8ea 0%, #a8d0de 100%);
+  --secondary: #CFE3E7;
+  --secondary-gradient: linear-gradient(180deg, #d9e8ea 0%,#a8d0de 60%, #88bdd0 100%);
   --text: #2C3333; 
   --bluish: #494c4d;
   --curtain: #a4c5cb;
@@ -51,6 +51,7 @@ body {
 #appWrapper {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 main {

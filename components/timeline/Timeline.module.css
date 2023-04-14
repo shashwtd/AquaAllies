@@ -131,3 +131,21 @@
   font-family: "sharlee";
   pointer-events: none;
 }
+
+
+@media screen and (max-width: 800px) {
+  .timeline__items {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .num { 
+    display: none;
+  }
+}
+
+@media screen and (max-width: 586px) {
+  .timeline__items {
+    padding-right: 0;
+  }
+}

@@ -5,12 +5,27 @@ import { useEffect } from "react";
 import { gsap } from "gsap";
 
 export default function Header() {
+  useEffect(() => {
+      const header = document.querySelector(`.${styles.header}`);
+      if (header) {
+        if (header.hasAttribute("sticky")) return;
+        gsap.to(header, {
+          scrollTrigger: {
+            trigger: header,
+            start: "top top",
+            end: "bottom top",
+            scrub: true,
+          },
+          opacity: 0.1,
+        });
+      }
+  }, []);
   return (
     <div className={styles.header}>
       <div className={styles.inner}>
         <Pass href="/">
           <h1 className={styles.headerTitle} cursor-class="subtle">
-            Wotah.
+            AquaAlly.
           </h1>
         </Pass>
         <div className={styles.options}>

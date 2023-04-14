@@ -89,3 +89,19 @@
 .next:hover, .prev:hover {
   background-color: #0001;
 }
+
+@media screen and (max-width: 1000px) {
+  .carausel {
+    --box-size: 180px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .carausel {
+    --box-size: 160px;
+  }
+}
+@media screen and (max-width: 480px) {
+  .carausel {
+    --box-size: 160px;
+  }
+}

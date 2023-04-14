@@ -59,6 +59,18 @@
   margin-top: 0.2em;
 }
 
+.page[page-index="2"] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vid {
+  background-color: rgba(255, 255, 255, 0.727);
+  width: calc(100vw - 2em);
+  height: calc(100vh - 2em);
+  border-radius: 4px;
+}
 
 /* Make responsive */
 

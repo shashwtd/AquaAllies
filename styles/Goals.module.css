@@ -38,3 +38,13 @@
   border-radius: 10px;
   position: relative;
 }
+
+
+
+/* Responsive ok  */
+
+@media screen and (max-width: 1000px) {
+  .article {
+    padding: 5em 2em;
+  }
+}
