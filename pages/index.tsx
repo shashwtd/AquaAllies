@@ -46,24 +46,32 @@ function HomePage() {
           scrub: true,
         },
       });
-    }
 
-    const videoPreview = document.querySelector("#videoPreview");
-    if (videoPreview) {
+      const videoPreview = document.querySelector("#videoPreview");
       gsap.set(videoPreview, {
         scaleX: 0.5,
         transformOrigin: "center",
       });
-
       gsap.to(videoPreview, {
         scrollTrigger: {
           trigger: videoPreview,
           start: `top bottom`,
-          end: "top 20%",
+          end: "top 21px",
           scrub: true,
         },
         scaleX: 1,
-        y: -200,
+      });
+      gsap.to(videoPreview, {
+        scrollTrigger: {
+          trigger: videoPreview,
+          start: `top 21px`,
+          end: "top -600px",
+          scrub: true,
+        },
+        y: 300,
+        onComplete: () => {
+          console.log("OKAY");
+        },
       });
     }
 
@@ -83,7 +91,7 @@ function HomePage() {
         image.removeEventListener("load", checkImagesLoaded)
       );
     };
-  }, []);
+  });
 
   function setValues(data: any) {
     let title = document.querySelector("#topicTitle") as HTMLElement;
@@ -240,7 +248,9 @@ function HomePage() {
         </div>
 
         <div className={styles.page} page-index="2" id="pageReel">
-          <div id="videoPreview" className={styles.vid}></div>
+          <div id="videoPreview" className={styles.vid} cursor-class="hide">
+              <div className={styles.vidTitle}>Watch Showreel</div>
+          </div>
         </div>
 
         <div className={styles.page} page-index="3" id="pageIntro">

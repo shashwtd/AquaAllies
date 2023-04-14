@@ -8,15 +8,19 @@ import Curtain from "@/components/curtain/Curtain";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+  const lenisRef = React.useRef<Lenis | null>(null);
 
   React.useEffect(() => {
-    const lenis = new Lenis({
+    lenisRef.current = new Lenis({
       duration: 1.4,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
+
     function raf(time: any) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+      if (lenisRef.current) {
+        lenisRef.current.raf(time);
+        requestAnimationFrame(raf);
+      }
     }
 
     requestAnimationFrame(raf);

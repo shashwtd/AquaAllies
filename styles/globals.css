@@ -142,6 +142,10 @@ a {
     font-family: 'HK_wide';
     src: url('/fonts/HK_wide.otf');
 }
+@font-face {
+    font-family: 'HK_boldenWide';
+    src: url('/fonts/HK_boldenWide.otf');
+}
 
 @font-face {
     font-family: 'Helvetica';
