@@ -1,6 +1,5 @@
 import { gsap } from "gsap";
 import React from "react";
-import Vimeo from "@u-wave/react-vimeo";
 import styles from "./Player.module.css";
 
 function showPlayer() {
@@ -21,6 +20,17 @@ function hidePlayer() {
       scale: 0.8,
       onComplete: () => {
         gsap.set(player, { display: "none", scale: 1 });
+        const fok = document.querySelector(`.${styles.fok}`);
+        if (fok) {
+          fok.innerHTML = `<iframe
+    src="https://player.vimeo.com/video/817913059?h=ed0c3b745b&title=0&byline=0&portrait=0"
+    width="640"
+    height="349"
+    allow="autoplay; fullscreen; picture-in-picture"
+    allowFullScreen
+    id="vid"
+    ></iframe>`;
+        }
       },
     });
   }
@@ -29,17 +39,19 @@ function hidePlayer() {
 function Player() {
   return (
     <div className={styles.player}>
-      <div className={styles.btn} onClick={hidePlayer}>
+      <button id="btn" onClick={hidePlayer}>
         ←
+      </button>
+      <div className={styles.fok}>
+        <iframe
+          src="https://player.vimeo.com/video/817913059?h=ed0c3b745b&title=0&byline=0&portrait=0"
+          width="640"
+          height="349"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowFullScreen
+          id="vid"
+        ></iframe>
       </div>
-      <iframe
-        src="https://player.vimeo.com/video/817913059?h=ed0c3b745b&title=0&byline=0&portrait=0"
-        width="640"
-        height="349"
-        allow="autoplay; fullscreen; picture-in-picture"
-        allowFullScreen
-        className={styles.vid}
-      ></iframe>
     </div>
   );
 }

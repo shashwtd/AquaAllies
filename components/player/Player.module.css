@@ -13,7 +13,7 @@
     justify-content: center;
 }
 
-.btn {
+.player button {
     position: absolute;
     top: 1rem;
     left: 1rem;
@@ -34,12 +34,12 @@
     transition: 0.2s ease;
 }
 
-.btn:hover {
+.player button {
     background: #fff3;
     border: 2px solid #fff2;
 }
 
-.vid {
+.fok iframe {
     width: 100vw;
     height: 100vh;
     border: none;

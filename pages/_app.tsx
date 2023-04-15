@@ -43,9 +43,8 @@ export default function App({ Component, pageProps }: AppProps) {
           <video loop muted autoPlay className="fsBgVid">
             <source src="/assets/bg.webm" type="video/webm" />
           </video>
-
-          <Player />
         </div>
+        <Player />
         <div className="scrollBar" id="scroll"></div>
         <Component {...pageProps} />
       </div>

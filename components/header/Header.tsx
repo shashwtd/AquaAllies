@@ -1,8 +1,6 @@
 import styles from "./Header.module.css";
-import { HideCursor } from "../cursor/Cursor";
 import Pass from "@/components/pass/Pass";
-import { useEffect } from "react";
-import { gsap } from "gsap";
+import { showPlayer } from "../player/Player";
 
 
 export default function Header() {
@@ -32,7 +30,7 @@ export default function Header() {
           <span
             className={styles.actionButton}
             cursor-class="overlay"
-            onClick={HideCursor}
+            onClick={showPlayer}
           >
             Showreel
             <span>→</span>
