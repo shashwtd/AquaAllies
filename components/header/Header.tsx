@@ -19,9 +19,6 @@ export default function Header() {
           <Pass href="/goals">
             <span cursor-class="overlay">goals</span>
           </Pass>
-          <Pass href="/reports">
-            <span cursor-class="overlay">reports</span>
-          </Pass>
           <Pass href="/contribute">
             <span cursor-class="overlay">contribute</span>
           </Pass>

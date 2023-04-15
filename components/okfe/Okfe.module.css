@@ -1,0 +1,64 @@
+.okfe {
+  width: 400px;
+  min-width: 300px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  overflow: hidden;
+  justify-content: flex-start;
+  border-radius: 10px;
+  background: radial-gradient(#0002, #0003);
+  border: 4px solid #2221;
+  padding-bottom: .6em;
+}
+
+.okfeImg {
+  width: 100%;
+  height: auto;
+  opacity: 0.8;
+}
+
+.okfeText {
+  width: 100%;
+  text-align: left;
+  color: var(--text);
+  padding: 0.5em;
+  font-family: "HK_wide";
+}
+
+.okfeText h3 {
+  font-size: 0.95em;
+}
+
+.okfeText p {
+  font-size: 0.6em;
+  font-family: "sharlee";
+  margin-top: 0.5em;
+  opacity: 0.8;
+}
+
+.okfeLink {
+  text-align: left;
+  color: var(--text);
+  padding: 0 0.5em;
+  font-family: "sharlee";
+  font-size: 0.8em;
+  opacity: 0.8;
+}
+
+.okfeLink a {
+  font-family: "sharlee";
+  opacity: 0.8;
+}
+
+.okfeLink a span {
+  pointer-events: none;
+  display: inline-block;
+  transition: 0.2s ease;
+}
+
+.okfeLink a:hover span {
+  transform: translateX(5px);
+  rotate: -25deg;
+}

@@ -3,6 +3,7 @@ import React from "react";
 import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import { RemoveCurtain } from "@/components/curtain/Curtain";
 import styles from "@/styles/Contribute.module.css";
+import Okfe from "@/components/okfe/Okfe";
 
 const Contribute = () => {
   React.useEffect(() => {
@@ -128,6 +129,28 @@ const Contribute = () => {
             <br />
             <br />
             <h3>Some Additional ways to contribute —</h3>
+            <br />
+            <br />
+            <div className={styles.okfee}>
+              <Okfe
+                title="Team Seas 🌊"
+                desc="This is a fundraiser created and promoted by various YouTubers primarily MrBeast and Mark Rober. The fundraiser has helped in removing more than 30 million pounds (14 million kg) of marine debris from the ocean and still going."
+                thumb="/images/seas.jpg"
+                link="https://teamseas.org/"
+              />
+              <Okfe
+                title="Water.org"
+                desc="An organization that focuses on providing access to safe water and sanitation to people in need by working with local partners to develop sustainable solutions that empower communities to take ownership of their own water resources."
+                thumb="/images/wate.jpg"
+                link="https://water.org/donate/"
+              />
+              <Okfe
+                title="The Water Project"
+                desc="This is a nonprofit organization that works to provide access to clean and safe water to communities in Africa. They work with local partners to implement sustainable water projects that provide communities with clean water sources."
+                thumb="/images/conse.jpg"
+                link="https://thewaterproject.org/donate"
+              />
+            </div>
           </div>
         </article>
       </main>

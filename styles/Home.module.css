@@ -144,4 +144,9 @@
   .landing {
     height: 100vh;
   }
+
+  /* Make the landing text small */
+  .landing .title span {
+    font-size: 4em;
+  }
 }

@@ -31,7 +31,7 @@ const Reports = () => {
       <Cursor />
 
       <main id="reportsPage">
-        <h1>Main</h1>
+        
       </main>
     </>
   );

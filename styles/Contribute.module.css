@@ -2,10 +2,9 @@
   margin: 8em 3em;
   padding: 2em;
   border-radius: 10px;
-  padding-bottom: 0;
+  padding-bottom: 2em;
   font-size: 1.8em;
   position: relative;
-  padding-bottom: 300px;
   background-color: rgba(0, 0, 0, 0.171);
   border: 2px solid #fff3;
 }
@@ -93,4 +92,11 @@
   .article {
     padding: 5em 2em;
   }
+}
+
+.okfee {
+  margin-top: 1em;
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
 }
