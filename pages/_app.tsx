@@ -5,6 +5,7 @@ import Header from "@/components/header/Header";
 import Lenis from "@studio-freight/lenis";
 import Player from "@/components/player/Player";
 import Curtain from "@/components/curtain/Curtain";
+import Footer from "@/components/footer/Footer";
 
 export default function App({ Component, pageProps }: AppProps) {
   const lenisRef = React.useRef<Lenis | null>(null);
@@ -34,6 +35,10 @@ export default function App({ Component, pageProps }: AppProps) {
     });
   }, []);
 
+  function gotoTop() {
+    lenisRef.current?.scrollTo("start");
+  }
+
   return (
     <React.StrictMode>
       <Curtain />
@@ -47,6 +52,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <Player />
         <div className="scrollBar" id="scroll"></div>
         <Component {...pageProps} />
+        <Footer scrollTop={gotoTop}/>
       </div>
     </React.StrictMode>
   );

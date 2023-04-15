@@ -1,0 +1,21 @@
+.footer {
+    background-color: red;
+    width: 200px;
+    height: 200px;
+    background: url("/assets/top.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    bottom: 4em;
+    right: 4em;
+    z-index: 6;
+    opacity: 0.6;
+    filter: invert(1);
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.footer:hover {
+    opacity: .8;
+    scale: 1.09;
+}
