@@ -23,6 +23,10 @@ For more information about the hackathon and how to participate, please visit th
 [Aikagra Gupta](https://github.com/aikagra) - Showreel
 
 [Codingal Hackathon 2023](https://www.codingal.com/competitions/hpe-codewars-2023-hackathon/)
+<br>
 [water.org](https://water.org/)
+<br>
 [teamseas.org](https://teamseas.org/)
+<br>
 [thewaterproject.org](https://thewaterproject.org/donate)
+<br>
