@@ -7,7 +7,6 @@ import Lenis from "@studio-freight/lenis";
 import Curtain from "@/components/curtain/Curtain";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const router = useRouter();
   const lenisRef = React.useRef<Lenis | null>(null);
 
   React.useEffect(() => {
@@ -25,12 +24,16 @@ export default function App({ Component, pageProps }: AppProps) {
 
     requestAnimationFrame(raf);
     const scroll = document.getElementById("scroll");
+    const bg = document.querySelector(".fsBgVid") as HTMLVideoElement;
     window.addEventListener("scroll", () => {
       let scrollPerc =
         (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
         100;
       scroll!.style.setProperty("--scroll", `${scrollPerc}%`);
+      bg!.style.top = `-${scrollPerc}%`;
     });
+
+
   }, []);
 
   return (
@@ -38,6 +41,17 @@ export default function App({ Component, pageProps }: AppProps) {
       <Curtain />
       <div id="appWrapper">
         <Header />
+        <div className="fsBg">
+          <video
+            loop
+            muted
+            autoPlay
+            poster="img/videoframe.jpg"
+            className="fsBgVid"
+          >
+            <source src="/assets/bg.webm" type="video/webm" />
+          </video>
+        </div>
         <div className="scrollBar" id="scroll"></div>
         <Component {...pageProps} />
       </div>

@@ -13,6 +13,7 @@ body {
   font-size: 14px !important;
   user-select: none;
   background: var(--secondary);
+  position: relative;
 }
 
 :root {
@@ -47,6 +48,19 @@ body {
   --carausel-blue: #87bbd1;
   --hh: 6em;
 }
+:root {
+  --primary: #EAE0DA;
+  --secondary: #3250e7;
+  --secondary-gradient: linear-gradient(180deg, #3250e7 0%,#2c56e3 60%, #1134e1 100%);
+  --text: white; 
+  --bluish: #cfe7ef;
+  --curtain: #a4c5cb;
+  --content-box: #256D85;
+  --target-bg: #a0c3d28b;
+  --topic-bg: #d1dfe1;
+  --carausel-blue: #ffffff7d;
+  --hh: 6em;
+}
 
 #appWrapper {
   display: flex;
@@ -63,15 +77,31 @@ main {
   scroll-behavior: smooth;
 }
 
-main::after {
+#appWrapper {
+  position: relative;
+}
+
+.fsBg {
   content: '';
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: var(--secondary-gradient);
+  background: #2678CD;
   z-index: 2;
+  overflow: hidden;
+}
+
+.fsBg .fsBgVid {
+  width: 100%;
+  height: auto;
+  position: fixed;
+  top: 0%;
+  left: 0;
+  opacity: 0.6;
+  /* transform: scaleX(-1); */
+
 }
 
 main > * {
@@ -119,8 +149,7 @@ a {
 .scrollBar::after {
     content: '';
     position: absolute;
-    background-color: var(--secondary);
-    filter: brightness(0.7);
+    background-color: #fff8;
     top: 0;
     right: 0;
     width: 8px;
