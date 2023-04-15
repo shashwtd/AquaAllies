@@ -58,31 +58,54 @@ const Contribute = () => {
             </p>
             <ol>
               <li l-index="1">
-                <b>Educate yourself and others.</b> One of the first steps to
-                contributing to the SDGs is to educate yourself about the goals
-                and why they are important. You can then share this knowledge
-                with others, whether it's through conversations with friends and
-                family, social media, or public speaking.
+                <b>Find a Goal 6 charity you want to support.</b>
+                One of the best and easiest ways to contribute towards this goal
+                is to find a trustworthy charity and donate to them. There are
+                many charities that are working on SDG-related projects and
+                initiatives. By volunteering your time and skills, you can
+                directly contribute to these efforts. contribution to these
+                efforts.
               </li>
               <li l-index="2">
-                <b>Take action in your own life.</b> There are many small
-                changes that individuals can make in their own lives to support
-                the SDGs. This can include things like reducing your carbon
-                footprint, supporting local businesses, or volunteering in your
-                community.
+                <b>Run a campaign on hygiene.</b> You can also raise awareness
+                about the hygiene issues in your community through social media,
+                school/university campaign or even a campaign in the
+                neighbourhood you live in. The more people you reach, the more
+                likely you are to make a difference.
               </li>
               <li l-index="3">
-                <b>Volunteer your time and skills.</b> There are many
-                organizations that are working on SDG-related projects and
-                initiatives. By volunteering your time and skills, you can make
-                a direct contribution to these efforts.
+                <b>Organize a clean up project for rivers and oceans.</b>
+                There are many organizations that are working on similar
+                projects but if you feel like it you can create your own.
+                Engaging your whole community to clean up a local river, seaside
+                or ocean can make a lot of difference. You can also encourage
+                your friends and family to do the same and contribute towards
+                this cause.
               </li>
               <li l-index="4">
-                <b>Advocate for policy changes.</b> Finally, individuals can
-                contribute to the SDGs by advocating for policy changes that
-                support the goals. This can involve contacting elected
-                officials, writing letters to the editor, or using social media
-                to raise awareness about specific issues.
+                <b>Raise awareness for lack of Sanitation</b>
+                About 4 billion people in this world lack access to basic
+                sanitation services. You can help by lending your voice and
+                efforts to generate awareness about the lack of toilets and
+                sanitation in many communities around the world.
+              </li>
+              <li l-index="5">
+                <b>Do not overuse water.</b>
+                One of the most simplest ways to contribute is to not waste
+                water. There are many for whom even the smallest amount of water
+                is a blessing. Make sure to close a tap when washing dishes,
+                take short showers – Bathtubs require gallons more water than a
+                5-10 minute shower. Consider getting a water meter to be aware
+                of your water usage.
+              </li>
+              <li l-index="6">
+                <b>Spread the word.</b>
+                The more people who know about the Global Goals, the more we can
+                achieve and the higher the chances of us creating a better world
+                for everyone by 2030. You can help by sharing this website on
+                social, and by talking to everyone about the action you’re
+                taking. You can also follow @TheGlobalGoals on social media to
+                stay up to date with the latest news and events.
               </li>
             </ol>
             <p>
@@ -97,6 +120,9 @@ const Contribute = () => {
               important.
             </p>
             <hr />
+            <br />
+            <br />
+            <h3>Some Additional ways to contribute —</h3>
           </div>
         </article>
       </main>

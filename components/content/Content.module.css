@@ -19,6 +19,7 @@
   line-height: 1.3;
   user-select: text;
   transform-origin: top left;
+  opacity: 0.9;
 }
 
 .content .introImgCont {

@@ -17,14 +17,13 @@ body {
 }
 :root {
   --primary: #EAE0DA;
-  --secondary: #3250e7;
+  --secondary: #6678d4;
   --secondary-gradient: linear-gradient(180deg, #3250e7 0%,#2c56e3 60%, #1134e1 100%);
   --text: white; 
   --bluish: #cfe7ef;
-  --curtain: rgb(143, 186, 240);
+  --curtain: rgb(135, 158, 228);
   --content-box: #256D85;
   --target-bg: #a0c3d28b;
-  --topic-bg: #d1dfe1;
   --carausel-blue: #ffffff7d;
   --hh: 6em;
 }
@@ -67,7 +66,7 @@ main {
   top: 0%;
   left: 0;
   opacity: 0.6;
-  filter: grayscale(1);
+  transform: scaleX(-1);
 }
 
 main > * {

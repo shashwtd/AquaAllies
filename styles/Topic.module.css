@@ -4,10 +4,49 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--topic-bg);
   z-index: 20;
   transform: translateY(100%);
   color: var(--text);
+  background-color: white;
+  background: radial-gradient(at center, #697dc5, #3f3fa9);
+
+  -webkit-animation: AnimationName 30s ease infinite;
+  -moz-animation: AnimationName 30s ease infinite;
+  animation: AnimationName 30s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0% {
+    background-position: 48% 0%;
+  }
+  50% {
+    background-position: 53% 100%;
+  }
+  100% {
+    background-position: 48% 0%;
+  }
+}
+@-moz-keyframes AnimationName {
+  0% {
+    background-position: 48% 0%;
+  }
+  50% {
+    background-position: 53% 100%;
+  }
+  100% {
+    background-position: 48% 0%;
+  }
+}
+@keyframes AnimationName {
+  0% {
+    background-position: 48% 0%;
+  }
+  50% {
+    background-position: 53% 100%;
+  }
+  100% {
+    background-position: 48% 0%;
+  }
 }
 
 .content {
@@ -38,26 +77,26 @@
 }
 
 .imgCont {
-    position: relative;
-    padding: 0;
-    margin: 0;
-    width: fit-content;
-    height: fit-content;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  width: fit-content;
+  height: fit-content;
 }
 
 .imgCont::after {
-    content: '';
-    position: absolute;
-    top: -4px;
-    left: -3px;
-    width: calc(100% + 4px);
-    height: calc(100% + 2px);
-    border: 2px solid #1114;
-    transition: 0.2s ease-out;
-    border-radius: 5px;
-    opacity: 0;
-    transition: opacity 0.2s ease-out;
-    pointer-events: none;
+  content: "";
+  position: absolute;
+  top: -4px;
+  left: -3px;
+  width: calc(100% + 4px);
+  height: calc(100% + 2px);
+  border: 2px solid #1114;
+  transition: 0.2s ease-out;
+  border-radius: 5px;
+  opacity: 0;
+  transition: opacity 0.2s ease-out;
+  pointer-events: none;
 }
 
 .imgCont:hover::after {
@@ -85,7 +124,7 @@
 .goBack span {
   margin-right: 0.2em;
   font-family: "sharlee";
-  display:inline-block;
+  display: inline-block;
   pointer-events: none;
   transition: transform 0.1s ease-out;
 }
@@ -103,9 +142,8 @@
   justify-content: center;
   padding-left: 1em;
   padding-right: 5em;
-  user-select:text;
+  user-select: text;
 }
-
 
 .data h2 {
   font-size: 3rem;
@@ -118,7 +156,7 @@
 
 .data h4 {
   font-size: 1.35rem;
-  font-family: 'HK';
+  font-family: "HK";
   font-weight: 400;
   color: inherit;
 }

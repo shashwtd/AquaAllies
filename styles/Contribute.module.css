@@ -1,9 +1,12 @@
 .article {
-  padding: 10em 5em;
+  margin: 8em 3em;
+  padding: 2em;
+  border-radius: 10px;
   padding-bottom: 0;
   font-size: 1.8em;
   position: relative;
   padding-bottom: 300px;
+  background-color: rgba(0, 0, 0, 0.171);
 }
 
 .article .article__content {
@@ -60,11 +63,12 @@
     font-size: .95em;
     padding: 1em;
     border-radius: 10px;
-    background: radial-gradient(#0004, #0005);
-    border: 4px solid #0001;
+    background: radial-gradient(#0002, #0003);
+    border: 4px solid #2221;
     padding-top: 6rem;
     font-size: 0.8em;
     margin-bottom: 2em;
+    color: #fffe;
 }
 
 .article__content ol li b {
