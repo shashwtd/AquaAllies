@@ -30,7 +30,6 @@ export default function App({ Component, pageProps }: AppProps) {
         (window.scrollY / (document.body.scrollHeight - window.innerHeight)) *
         100;
       scroll!.style.setProperty("--scroll", `${scrollPerc}%`);
-      bg!.style.top = `-${scrollPerc}%`;
     });
 
 
@@ -42,15 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <div id="appWrapper">
         <Header />
         <div className="fsBg">
-          <video
-            loop
-            muted
-            autoPlay
-            poster="img/videoframe.jpg"
-            className="fsBgVid"
-          >
-            <source src="/assets/bg.webm" type="video/webm" />
-          </video>
+          <div className="fsBgVid"></div>
         </div>
         <div className="scrollBar" id="scroll"></div>
         <Component {...pageProps} />
