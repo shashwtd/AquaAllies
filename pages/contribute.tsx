@@ -28,7 +28,7 @@ const Contribute = () => {
       <Cursor />
       <main id="goalsPage">
         <article className={styles.article}>
-          <div className={styles.article__content} contentEditable>
+          <div className={styles.article__content}>
             <h1>Here's how to Contribute!</h1>
             <p>
               We are a community of people who are passionate about the SDGs and
