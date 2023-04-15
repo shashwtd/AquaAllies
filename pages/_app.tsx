@@ -2,8 +2,8 @@ import React from "react";
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
 import Header from "@/components/header/Header";
-import { useRouter } from "next/router";
 import Lenis from "@studio-freight/lenis";
+import Player from "@/components/player/Player";
 import Curtain from "@/components/curtain/Curtain";
 
 export default function App({ Component, pageProps }: AppProps) {
@@ -40,14 +40,11 @@ export default function App({ Component, pageProps }: AppProps) {
       <div id="appWrapper">
         <Header />
         <div className="fsBg">
-          <video
-            loop
-            muted
-            autoPlay
-            className="fsBgVid"
-          >
+          <video loop muted autoPlay className="fsBgVid">
             <source src="/assets/bg.webm" type="video/webm" />
           </video>
+
+          <Player />
         </div>
         <div className="scrollBar" id="scroll"></div>
         <Component {...pageProps} />

@@ -213,7 +213,6 @@ function HomePage() {
       </Head>
 
       <Cursor />
-      <Player />
 
       <div className={topic.overlay}>
         <div className={topic.content}>
