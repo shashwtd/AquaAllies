@@ -7,6 +7,7 @@
   position: relative;
   padding-bottom: 300px;
   background-color: rgba(0, 0, 0, 0.171);
+  border: 2px solid #fff3;
 }
 
 .article .article__content {

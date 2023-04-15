@@ -32,8 +32,6 @@ export default function App({ Component, pageProps }: AppProps) {
       scroll!.style.setProperty("--scroll", `${scrollPerc}%`);
       bg!.style.top = `-${scrollPerc}%`;
     });
-
-
   }, []);
 
   return (
@@ -46,7 +44,6 @@ export default function App({ Component, pageProps }: AppProps) {
             loop
             muted
             autoPlay
-            poster="img/videoframe.jpg"
             className="fsBgVid"
           >
             <source src="/assets/bg.webm" type="video/webm" />
@@ -58,33 +55,3 @@ export default function App({ Component, pageProps }: AppProps) {
     </React.StrictMode>
   );
 }
-
-const pageVariants = {
-  initial: {
-    opacity: 0,
-    x: "-100%",
-  },
-  enter: {
-    opacity: 1,
-    x: 0,
-    transition: {
-      type: "spring",
-      stiffness: 500,
-      damping: 30,
-      mass: 0.5,
-      duration: 0.5,
-      delay: 0.2,
-    },
-  },
-  exit: {
-    opacity: 0,
-    x: "100%",
-    transition: {
-      type: "spring",
-      stiffness: 500,
-      damping: 30,
-      mass: 0.5,
-      duration: 0.5,
-    },
-  },
-};

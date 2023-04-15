@@ -13,7 +13,6 @@ const TimelineTarget = (prop: { iter: string; desc: string }) => {
   useEffect(() => {
     gsap.set(timelineItems.current, { opacity: 0.7, scale: 0.9 });
     gsap.to(timelineItems.current, {
-      borderColor: "#1113",
       opacity: 1,
       scale: 1,
       ease: "power4.out",
@@ -25,9 +24,9 @@ const TimelineTarget = (prop: { iter: string; desc: string }) => {
       },
     });
 
-    gsap.set(timeline.current, { "--bg": "#8e8e8e", "--s": 0.8 });
+    gsap.set(timeline.current, { "--bg": "#eef0f100", "--s": 0.8 });
     gsap.to(timeline.current, {
-      "--bg": "#646464",
+      "--bg": "#eef0f1ff",
       "--s": 1,
       ease: "power4.out",
       scrollTrigger: {

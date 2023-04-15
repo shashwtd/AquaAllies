@@ -1,0 +1,48 @@
+.player {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 500;
+    background-color: #111;
+    left: 0;
+    display: none;
+    opacity: 0;
+    scale: 0.8;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    width: 5rem;
+    height: 4rem;
+    background: #fff2;
+    border: 2px solid #fff1;
+    border-radius: 5px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    font-weight: 700;
+    color: #fff6;
+    font-family: 'sharlee';
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    background: #fff3;
+    border: 2px solid #fff2;
+}
+
+.vid {
+    width: 100vw;
+    height: 100vh;
+    border: none;
+}
+
+

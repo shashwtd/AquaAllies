@@ -76,7 +76,6 @@
   position: relative;
   display: flex;
   align-items: center;
-  overflow: hidden;
   border-radius: 10px;
   justify-content: center;
   cursor: pointer;

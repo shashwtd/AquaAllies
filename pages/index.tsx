@@ -11,6 +11,7 @@ import React from "react";
 import Image from "next/image";
 import ReactDOM from "react-dom";
 import { RemoveCurtain } from "@/components/curtain/Curtain";
+import Player, {showPlayer, hidePlayer} from "@/components/player/Player";
 
 function HomePage() {
   gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -72,6 +73,10 @@ function HomePage() {
         onComplete: () => {
           console.log("OKAY");
         },
+      });
+
+      videoPreview?.addEventListener("click", () => {
+        showPlayer();
       });
     }
 
@@ -208,6 +213,7 @@ function HomePage() {
       </Head>
 
       <Cursor />
+      <Player />
 
       <div className={topic.overlay}>
         <div className={topic.content}>
