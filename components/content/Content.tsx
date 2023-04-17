@@ -113,7 +113,6 @@ function Content(prop: {
           <div className={styles.introImgBox}></div>
           <div
             className={styles.introImgOverlay}
-            ="arrow"
             id="topicLink"
             onClick={() => {
               handleLinkClick();
