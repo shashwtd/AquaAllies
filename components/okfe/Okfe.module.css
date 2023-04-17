@@ -56,13 +56,13 @@
 .okfeLink a::after {
   content: '';
   position: absolute;
-  width: 100%;
+  width: 110%;
   height: 0;
   border: 1px solid var(--text);
   left: 0;
   top: 100%;
   border-radius: 4px;
-  opacity: 0.8;
+  opacity: 0.5;
   scale: 0 1;
   transition: 0.2s ease-out;
   transform-origin: left;
