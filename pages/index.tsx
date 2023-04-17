@@ -6,7 +6,6 @@ import ScrollTrigger from "gsap/dist/ScrollTrigger";
 import { TextPlugin } from "gsap/dist/TextPlugin";
 import { useEffect, useRef } from "react";
 import Content from "@/components/content/Content";
-import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import React from "react";
 import Image from "next/image";
 import ReactDOM from "react-dom";
@@ -80,7 +79,7 @@ function HomePage() {
       });
     }
 
-    const handleLoad = () => RemoveCurtain(ResetCursor);
+    const handleLoad = () => RemoveCurtain();
     const images = document.querySelectorAll("img");
     const bgVid = document.querySelector(".fsBgVid") as HTMLVideoElement;
     let imagesToLoad = images.length + 1;
@@ -151,7 +150,6 @@ function HomePage() {
         });
       },
       onComplete: () => {
-        ResetCursor();
         if (elms[0] && elms[1]) {
           topicTimeline.to(elms[0], {
             x: 0,
@@ -171,7 +169,6 @@ function HomePage() {
   }
 
   function topicTransition(inf: any) {
-    HideCursor();
     setValues(inf);
   }
 
@@ -197,7 +194,7 @@ function HomePage() {
         width={500}
         height={220}
         id="topicImg"
-        cursor-class="hide"
+        
         src={src}
         alt={alt}
         className={topic.img}
@@ -212,14 +209,12 @@ function HomePage() {
         <title>Project Title</title>
       </Head>
 
-      <Cursor />
-
       <div className={topic.overlay}>
         <div className={topic.content}>
           <div className={topic.image}>
             <div
               className={topic.goBack}
-              cursor-class="overlay"
+              
               id="topicReturn"
               onClick={() => {
                 closeTopic();
@@ -231,7 +226,7 @@ function HomePage() {
               className={topic.imgCont}
               id="topicImageContainer"
               ref={imageContainerRef}
-              cursor-class="hide"
+              
             >
               {generateImg(
                 "/images/river.jpg",
@@ -251,14 +246,14 @@ function HomePage() {
           <div></div>
           <div className={styles.landing}>
             <div className={styles.title} ref={titleRef}>
-              <span cursor-class="grow">Worldwide</span>
-              <span cursor-class="grow">Clean Water</span>
+              <span >Worldwide</span>
+              <span >Clean Water</span>
             </div>
           </div>
         </div>
 
         <div className={styles.page} page-index="2" id="pageReel">
-          <div id="videoPreview" className={styles.vid} cursor-class="hide">
+          <div id="videoPreview" className={styles.vid} >
             <div className={styles.vidTitle}>Watch Showreel</div>
           </div>
         </div>

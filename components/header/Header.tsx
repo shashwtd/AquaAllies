@@ -8,25 +8,25 @@ export default function Header() {
     <div className={styles.header}>
       <div className={styles.inner}>
         <Pass href="/">
-          <h1 className={styles.headerTitle} cursor-class="subtle">
+          <h1 className={styles.headerTitle} >
             AquaAlly.
           </h1>
         </Pass>
         <div className={styles.options}>
           <Pass href="/">
-            <span cursor-class="overlay">home</span>
+            <span >home</span>
           </Pass>
           <Pass href="/goals">
-            <span cursor-class="overlay">goals</span>
+            <span >goals</span>
           </Pass>
           <Pass href="/contribute">
-            <span cursor-class="overlay">contribute</span>
+            <span >contribute</span>
           </Pass>
         </div>
         <div className={styles.action}>
           <span
             className={styles.actionButton}
-            cursor-class="overlay"
+            
             onClick={showPlayer}
           >
             Showreel

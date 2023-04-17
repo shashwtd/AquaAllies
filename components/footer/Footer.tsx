@@ -7,7 +7,7 @@ export default function Footer(prop: { scrollTop: any }) {
   return (
     <div
       className={styles.footer}
-      cursor-class="hide"
+      
       onClick={prop.scrollTop}
     ></div>
   );

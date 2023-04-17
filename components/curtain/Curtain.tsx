@@ -18,7 +18,7 @@ function ThrowCurtain(CurtainThrown: any) {
   });
 }
 
-function RemoveCurtain(CurtainRemoved: any) {
+function RemoveCurtain() {
   const curtain = document.querySelector("." + styles.curtain) as HTMLElement;
   const waiter = document.querySelector("." + styles.waiter);
   if (waiter) gsap.set(waiter, {delay: 0.4, opacity: 0 });
@@ -30,14 +30,13 @@ function RemoveCurtain(CurtainRemoved: any) {
     scaleX: 0.2,
     onComplete: () => {
       if (curtain) gsap.set(curtain, {x: "-100vw", scaleX: 1});
-      if (CurtainRemoved instanceof Function) CurtainRemoved();
     },
   });
 }
 
 function Curtain() {
   return (
-    <div className={styles.curtain} cursor-class="hide" onClick={RemoveCurtain}>
+    <div className={styles.curtain}  onClick={RemoveCurtain}>
       <div className={styles.waiter}>
         <div className={styles.waiting}></div>
         <h2>loading..</h2>

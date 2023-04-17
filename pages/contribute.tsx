@@ -1,13 +1,12 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import { RemoveCurtain } from "@/components/curtain/Curtain";
 import styles from "@/styles/Contribute.module.css";
 import Okfe from "@/components/okfe/Okfe";
 
 const Contribute = () => {
   React.useEffect(() => {
-    const handleLoad = () => RemoveCurtain(ResetCursor);
+    const handleLoad = () => RemoveCurtain();
     const images = document.querySelectorAll("img");
     const bgVid = document.querySelector(".fsBgVid") as HTMLVideoElement;
     let imagesToLoad = images.length + 1;
@@ -31,7 +30,6 @@ const Contribute = () => {
   }, []);
   return (
     <>
-      <Cursor />
       <main id="goalsPage">
         <article className={styles.article}>
           <div className={styles.article__content}>

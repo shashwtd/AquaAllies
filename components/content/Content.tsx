@@ -105,7 +105,7 @@ function Content(prop: {
 
   return (
     <div className={styles.content}>
-      <div className={styles.intro} cursor-class="grow">
+      <div className={styles.intro} >
         {prop.text}
       </div>
       <div className={styles.introImgCont}>
@@ -113,7 +113,7 @@ function Content(prop: {
           <div className={styles.introImgBox}></div>
           <div
             className={styles.introImgOverlay}
-            cursor-class="arrow"
+            ="arrow"
             id="topicLink"
             onClick={() => {
               handleLinkClick();

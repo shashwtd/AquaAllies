@@ -1,10 +1,9 @@
 import React from "react";
-import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import { RemoveCurtain } from "@/components/curtain/Curtain";
 
 const Reports = () => {
   React.useEffect(() => {
-    const handleLoad = () => RemoveCurtain(ResetCursor);
+    const handleLoad = () => RemoveCurtain();
     const images = document.querySelectorAll("img");
     const bgVid = document.querySelector(".fsBgVid") as HTMLVideoElement;
     let imagesToLoad = images.length + 1;
@@ -28,7 +27,6 @@ const Reports = () => {
   }, []);
   return (
     <>
-      <Cursor />
 
       <main id="reportsPage">
         

@@ -23,7 +23,7 @@ function Okfe(prop: {
         <p>{prop.desc}</p>
       </div>
       <div className={styles.okfeLink}>
-        <a href={prop.link} target="_blank" cursor-class="overlay">Donate <span>→</span></a>
+        <a href={prop.link} target="_blank" >Donate <span>→</span></a>
       </div>
     </div>
   );
