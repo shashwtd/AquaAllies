@@ -140,12 +140,10 @@ a {
     font-family: 'HK_boldenWide';
     src: url('/fonts/HK_boldenWide.otf');
 }
-
 @font-face {
     font-family: 'Helvetica';
     src: url('/fonts/Helvetica.otf');
 }
-
 @font-face {
     font-family: 'Lora';
     src: url('/fonts/Lora.woff2');
