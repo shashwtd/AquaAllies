@@ -8,10 +8,11 @@ function ThrowCurtain(CurtainThrown: any, direction: string) {
   direction_ = direction;
   const curtain = document.querySelector("." + styles.curtain) as HTMLElement;
   if (curtain) {
+    gsap.set(curtain, {scaleX: 0.3, visibility: "initial"});
     if (direction === "right") {
-      gsap.set(curtain, { x: "-100vw", scaleX: 0.3, transformOrigin: "right" });
+      gsap.set(curtain, { x: "-100vw", transformOrigin: "right" });
     } else if (direction === "left") {
-      gsap.set(curtain, { x: "100vw", scaleX: 0.3, transformOrigin: "left" });
+      gsap.set(curtain, { x: "100vw", transformOrigin: "left" });
     }
   }
   gsap.to(curtain, {
@@ -42,6 +43,7 @@ function RemoveCurtain() {
     scaleX: 0.2,
     onComplete: () => {
       if (curtain) {
+        gsap.set(curtain, {visibility: "hidden"})
         if (direction_ === "right") {
           gsap.set(curtain, { x: "-100vw", scaleX: 1 });
         } else if (direction_ === "left") {

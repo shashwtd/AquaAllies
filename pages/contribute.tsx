@@ -137,13 +137,13 @@ const Contribute = () => {
                 link="https://teamseas.org/"
               />
               <Okfe
-                title="Water.org 🚰"
+                title="Water.org"
                 desc="An organization that focuses on providing access to safe water and sanitation to people in need by working with local partners to develop sustainable solutions that empower communities to take ownership of their own water resources."
                 thumb="/images/wate.jpg"
                 link="https://water.org/donate/"
               />
               <Okfe
-                title="The Water Project 💧"
+                title="The Water Project"
                 desc="This is a nonprofit organization that works to provide access to clean and safe water to communities in Africa. They work with local partners to implement sustainable water projects that provide communities with clean water sources."
                 thumb="/images/conse.jpg"
                 link="https://thewaterproject.org/donate"

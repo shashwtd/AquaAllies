@@ -63,10 +63,16 @@ main {
   width: 100%;
   height: auto;
   position: fixed;
-  top: 0%;
+  top: 0;
   left: 0;
   opacity: 0.6;
   transform: scaleX(-1);
+}
+
+@media screen and (max-width: 600px) {
+  .fsBg {
+    display: none;
+  }
 }
 
 main > * {
@@ -120,6 +126,12 @@ a {
     width: 8px;
     height: var(--scroll);
     z-index: 2;
+}
+
+@media screen and (max-width: 500px) {
+    .scrollBar {
+      display: none;
+    }
 }
 
 ::selection {

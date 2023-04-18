@@ -1,5 +1,4 @@
 .article {
-  margin: 8em 3em;
   padding: 2em;
   border-radius: 10px;
   padding-bottom: 2em;
@@ -7,6 +6,7 @@
   position: relative;
   background-color: rgba(0, 0, 0, 0.171);
   border: 2px solid #fff3;
+  margin: 8em 3em;
   margin-bottom: calc(8em + 200px);
 }
 
@@ -81,15 +81,39 @@
 
 /* Responsive ok  */
 
-@media screen and (max-width: 1000px) {
-  .article {
-    padding: 5em 2em;
-  }
-}
-
 .okfee {
-  margin-top: 1em;
   display: flex;
   flex-direction: row;
   gap: 1em;
+}
+
+@media screen and (max-width: 1200px) {
+  .okfee {
+    flex-direction: column;
+  }
+  .article {
+    font-size: 1.6em;
+  }
+}
+
+@media screen and (max-width: 730px) {
+  .article {
+    margin: 8em 1em;
+    margin-bottom: calc(6em + 200px);
+    font-size: 1.4em;
+    padding: 1.5em;
+  }
+  .article__content h3 {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .article {
+    padding: 1em;
+  }
+
+  .article__content h3 {
+    font-size: 1.1em;
+  }
 }
