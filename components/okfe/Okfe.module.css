@@ -124,7 +124,8 @@
   }
 }
 
-@media screen and (max-width: 1200px) {
-  .okfeImg {
+@media screen and (max-width: 380px) {
+  .okfe {
+    min-width: 200px;
   }
 }

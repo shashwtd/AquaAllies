@@ -118,6 +118,10 @@
     opacity: 1;
 }
 
+.action .actionButton[btn-action="menu"] {
+    display: none;
+}
+
 @media (max-width: 768px) {
     .header {
         padding: 0 2em;
@@ -142,5 +146,19 @@
 
     .action .actionButton span {
         margin: 0 0.2em 0 0.4em;
+    }
+}
+
+@media (max-width: 500px) {
+    .action .actionButton[btn-action="player"] {
+        display: none;
+    }
+
+    .action .actionButton[btn-action="menu"] {
+        display: initial;
+    }
+
+    .options {
+        display: none;
     }
 }
