@@ -3,12 +3,7 @@ import styles from "./Footer.module.css";
 
 export default function Footer(prop: { scrollTop: any }) {
   const router = useRouter();
-  if (router.pathname === "/goals") return null;
   return (
-    <div
-      className={styles.footer}
-      
-      onClick={prop.scrollTop}
-    ></div>
+    <div id="daFooter" className={styles.footer} onClick={prop.scrollTop}></div>
   );
 }
