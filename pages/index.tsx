@@ -304,6 +304,8 @@ function HomePage() {
             clickback={topicTransition}
           />
         </div>
+
+        <div className={styles.dapad}></div>
       </main>
     </>
   );
