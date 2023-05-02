@@ -36,7 +36,7 @@ export default function App({ Component, pageProps }: AppProps) {
       MediaWidth(768) ? bg!.style.top = `0%` : bg!.style.top = `-${scrollPerc}%`;
     });
 
-    AskFeedback(0.4);
+    AskFeedback(0.1);
     
   }, []);
 
