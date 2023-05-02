@@ -13,7 +13,7 @@ function AskFeedback(mins: number) {
 
 function OpenPanel() {
   const panel = document.querySelector(`.${fs.feedback}`) as HTMLElement;
-  gsap.set(panel, { display: "flex", y: 100, opacity: 0, scale: 0.5});
+  gsap.set(panel, { display: "flex", y: 100, opacity: 0, scale: 0.5 });
   gsap.to(panel, { y: 0, opacity: 1, scale: 1, duration: 0.5 });
 }
 
@@ -50,6 +50,8 @@ function Feedback() {
         duration: 0.2,
         onComplete: () => {
           rate?.setAttribute("is-hoverable", "false");
+
+          setOk(true);
         },
       });
       tl.set(rate, {
@@ -98,11 +100,10 @@ function Feedback() {
       tl.to(stars, {
         textShadow: "0 0 10px #ffffff57",
         duration: 0.1,
-        onComplete: () => {setOk(true)},
       });
     });
     stars.forEach((star) => {
-        if (ok === false) return;
+      if (ok === false) return;
       star.addEventListener("click", () => {
         let starRating = Number(star?.getAttribute("data-star"));
         console.log(starRating);
@@ -111,9 +112,9 @@ function Feedback() {
           proceed?.setAttribute("active", "true");
           stars.forEach((x) => {
             if (Number(x.getAttribute("data-star")) <= starRating) {
-                x.classList.add(fs.oki);
+              x.classList.add(fs.oki);
             } else {
-                x.classList.remove(fs.oki);
+              x.classList.remove(fs.oki);
             }
           });
         }
@@ -167,7 +168,6 @@ function Feedback() {
         </svg>
       </div>
     </div>
-
   );
 }
 
