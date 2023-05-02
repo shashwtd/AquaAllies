@@ -16,13 +16,13 @@ initializeApp(firebaseConfig);
 const db = getFirestore();
 
 interface GeoLocationData {
-  country: string;
-  region: string;
-  city: string;
-  lat: number;
-  lon: number;
-  timezone: string;
-  ip: string;
+  country: string | "Unknown";
+  region: string | "Unknown";
+  city: string | "Unknown";
+  lat: number | "Unknown";
+  lon: number | "Unknown";
+  timezone: string | "Unknown";
+  ip: string | "0.0.0.0";
 }
 
 async function getGeoLocationData(): Promise<GeoLocationData> {

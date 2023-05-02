@@ -6,10 +6,29 @@ import { uploadRating } from "@/scripts/firebaseConfig";
 
 function AskFeedback(mins: number) {
   let delay = Math.round(mins * 60);
-  setTimeout(() => {}, delay);
+  setTimeout(() => {
+    OpenPanel();
+  }, delay);
 }
 
-function OpenPanel() {}
+function OpenPanel() {
+  const panel = document.querySelector(`.${fs.feedback}`) as HTMLElement;
+  gsap.set(panel, { display: "flex", y: 100, opacity: 0, scale: 0.5});
+  gsap.to(panel, { y: 0, opacity: 1, scale: 1, duration: 0.5 });
+}
+
+function ClosePanel() {
+  const panel = document.querySelector(`.${fs.feedback}`) as HTMLElement;
+  gsap.to(panel, {
+    y: 100,
+    opacity: 0,
+    scale: 0.5,
+    duration: 0.5,
+    onComplete: () => {
+      panel.style.display = "none";
+    },
+  });
+}
 
 function Feedback() {
   const [rating, setRating] = useState(0);
@@ -105,6 +124,7 @@ function Feedback() {
   function submitRating() {
     if (rating === 0) return;
     uploadRating(rating);
+    ClosePanel();
   }
 
   return (
@@ -147,8 +167,9 @@ function Feedback() {
         </svg>
       </div>
     </div>
-    
+
   );
 }
 
 export default Feedback;
+export { AskFeedback, OpenPanel };
