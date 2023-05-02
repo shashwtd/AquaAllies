@@ -5,7 +5,7 @@ import { useState } from "react";
 import { uploadRating } from "@/scripts/firebaseConfig";
 
 function AskFeedback(mins: number) {
-  let delay = Math.round(mins * 60);
+  let delay = Math.round(mins * 60 * 1000);
   setTimeout(() => {
     OpenPanel();
   }, delay);
