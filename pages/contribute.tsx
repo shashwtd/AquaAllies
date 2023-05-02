@@ -3,6 +3,7 @@ import React from "react";
 import { RemoveCurtain } from "@/components/curtain/Curtain";
 import styles from "@/styles/Contribute.module.css";
 import Okfe from "@/components/okfe/Okfe";
+import Head from "next/head";
 
 const Contribute = () => {
   React.useEffect(() => {
@@ -30,6 +31,9 @@ const Contribute = () => {
   }, []);
   return (
     <>
+      <Head>
+        <title>AquaAllies — Contribute</title>
+      </Head>
       <main id="goalsPage">
         <article className={styles.article}>
           <div className={styles.article__content}>

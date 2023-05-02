@@ -4,6 +4,7 @@ import styles from "@/styles/Goals.module.css";
 import Carausel from "@/components/carausel/Carausel";
 import Timeline from "@/components/timeline/Timeline";
 import { RemoveCurtain } from "@/components/curtain/Curtain";
+import Head from "next/head";
 
 const Goals = () => {
   React.useEffect(() => {
@@ -32,6 +33,10 @@ const Goals = () => {
 
   return (
     <>
+
+      <Head>
+        <title>AquaAllies — Goals</title>
+      </Head>
       <main id="goalsPage">
         <article className={styles.article}>
           <div className={styles.article__content}>

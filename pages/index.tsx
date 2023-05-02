@@ -10,7 +10,7 @@ import React from "react";
 import Image from "next/image";
 import ReactDOM from "react-dom";
 import { RemoveCurtain } from "@/components/curtain/Curtain";
-import Player, {showPlayer, hidePlayer} from "@/components/player/Player";
+import {showPlayer} from "@/components/player/Player";
 
 function HomePage() {
   gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -206,7 +206,7 @@ function HomePage() {
   return (
     <>
       <Head>
-        <title>Project Title</title>
+        <title>AquaAllies — Home</title>
       </Head>
 
       <div className={topic.overlay}>
