@@ -26,7 +26,7 @@ interface GeoLocationData {
 }
 
 async function getGeoLocationData(): Promise<GeoLocationData> {
-  const response = await fetch(`http://ip-api.com/json/?fields=61439`);
+  const response = await fetch(`https://ip-api.com/json/?fields=61439`);
   const data = await response.json();
   const { country, regionName: region, city, lat, lon, timezone, query: ip } = data;
   return {
