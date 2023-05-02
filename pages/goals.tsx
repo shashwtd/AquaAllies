@@ -1,6 +1,5 @@
 /* eslint-disable react/no-unescaped-entities */
 import React from "react";
-import Cursor, { ResetCursor, HideCursor } from "@/components/cursor/Cursor";
 import styles from "@/styles/Goals.module.css";
 import Carausel from "@/components/carausel/Carausel";
 import Timeline from "@/components/timeline/Timeline";
@@ -8,7 +7,7 @@ import { RemoveCurtain } from "@/components/curtain/Curtain";
 
 const Goals = () => {
   React.useEffect(() => {
-    const handleLoad = () => RemoveCurtain(ResetCursor);
+    const handleLoad = () => RemoveCurtain();
     const images = document.querySelectorAll("img");
     const bgVid = document.querySelector(".fsBgVid") as HTMLVideoElement;
     let imagesToLoad = images.length + 1;
@@ -33,7 +32,6 @@ const Goals = () => {
 
   return (
     <>
-      <Cursor />
       <main id="goalsPage">
         <article className={styles.article}>
           <div className={styles.article__content}>

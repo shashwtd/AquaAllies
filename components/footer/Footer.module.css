@@ -19,3 +19,20 @@
     opacity: .8;
     scale: 1.09;
 }
+
+@media screen and (max-width:760px) {
+    .footer {
+        width: 170px;
+        height: 170px;
+        right: 2em;
+        bottom: 3em;
+    }
+}
+@media screen and (max-width:560px) {
+    .footer {
+        width: 130px;
+        height: 130px;
+        right: 1em;
+        bottom: 2em;
+    }
+}

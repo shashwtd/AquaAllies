@@ -18,12 +18,16 @@ function Okfe(prop: {
         priority
         className={styles.okfeImg}
       />
-      <div className={styles.okfeText}>
-        <h3>{prop.title}</h3>
-        <p>{prop.desc}</p>
-      </div>
-      <div className={styles.okfeLink}>
-        <a href={prop.link} target="_blank" cursor-class="overlay">Contribute <span>→</span></a>
+      <div className={styles.okfeInfo}>
+        <div className={styles.okfeText}>
+          <h3>{prop.title}</h3>
+          <p>{prop.desc}</p>
+        </div>
+        <div className={styles.okfeLink}>
+          <a href={prop.link} target="_blank">
+            Donate <span>→</span>
+          </a>
+        </div>
       </div>
     </div>
   );

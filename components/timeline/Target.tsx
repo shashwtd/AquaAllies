@@ -16,10 +16,11 @@ const TimelineTarget = (prop: { iter: string; desc: string }) => {
       opacity: 1,
       scale: 1,
       ease: "power4.out",
+      duration: 0.5,
       scrollTrigger: {
         trigger: timeline.current,
-        start: "top 80%",
-        end: "bottom 80%",
+        start: "top bottom-=200px",
+        end: "bottom bottom-=200px",
         scrub: true,
       },
     });
@@ -31,8 +32,8 @@ const TimelineTarget = (prop: { iter: string; desc: string }) => {
       ease: "power4.out",
       scrollTrigger: {
         trigger: timeline.current,
-        start: "top 75%",
-        end: "bottom 75%",
+        start: "top bottom-=200px",
+        end: "bottom bottom-=200px",
         scrub: true,
         onEnter: () => {
           gsap.to("#timelineNum span", {
@@ -57,7 +58,7 @@ const TimelineTarget = (prop: { iter: string; desc: string }) => {
       <div
         className={styles.timeline__content}
         ref={timelineItems}
-        cursor-class="overlay"
+        
       >
         <h2>Target {prop.iter} —</h2>
         <p>{prop.desc}</p>

@@ -1,6 +1,8 @@
 import { useRouter } from "next/router";
 import { ThrowCurtain } from "@/components/curtain/Curtain";
 
+const passOrder = ["/", "/goals", "/contribute"]
+
 const CustomLink = (prop: { href: any; children: any }) => {
   const router = useRouter();
 
@@ -10,9 +12,15 @@ const CustomLink = (prop: { href: any; children: any }) => {
       router.push(prop.href);
     };
     
-    // Check to see if the link is the active page
     if (router.pathname === prop.href) return;
-    ThrowCurtain(curtainCallback);
+    if (passOrder.includes(prop.href) && passOrder.includes(router.pathname)) {
+      if (passOrder.indexOf(prop.href) > passOrder.indexOf(router.pathname)) {
+        ThrowCurtain(curtainCallback, "right");
+      } else if (passOrder.indexOf(prop.href) < passOrder.indexOf(router.pathname)) {
+        ThrowCurtain(curtainCallback, "left");
+
+      }
+    }
   };
 
   return <div onClick={handleClick}>{prop.children}</div>;

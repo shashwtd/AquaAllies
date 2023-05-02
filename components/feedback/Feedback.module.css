@@ -1,0 +1,157 @@
+.feedback {
+    position: fixed;
+    z-index: 99;
+    bottom: 20px;
+    right: 10px;
+    border-radius: 5px;
+    height: 80px;
+    min-width: 300px;
+    width: 350px;
+    background-color: #2b61b9;
+    background: linear-gradient(90deg, #1660a0, #2d5dbd);
+    border: 1px solid rgba(205, 205, 205, 0.41);
+    box-shadow: 0 0 20px 2px rgba(255, 255, 255, 0.095);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 5px 16px;
+    overflow: hidden;
+}
+
+.rate {
+    height: 70%;
+    aspect-ratio: 1;
+    border: none;
+    outline: none;
+    background: transparent;
+    mix-blend-mode: luminosity;
+    border-radius: 5px;
+    --top: 16px;
+    --right: 16px;
+    --width: 48px;
+    --height: 48px;
+    --left: none;
+}
+
+.rate::after {
+    content: '';
+    position: absolute;
+    top: var(--top);
+    width: var(--width);
+    height: var(--height);
+    left: var(--left);
+    right: var(--right);
+    background-color: rgb(189, 0, 0);
+    z-index: -1;
+    border-radius: 5px;
+    transition: 0.2s ease-out, top 0.5s, right 0.5s;
+    transform-origin: center center;
+}
+
+.rate[is-hoverable="true"]:hover::after {
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.fb {
+    color:rgba(255, 255, 255, 0.901);
+    font-family: 'sharlee';
+    z-index: 100;
+}
+
+.fb h1 {
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.fb p {
+    font-size: .85em;
+    font-weight: 400;
+    margin-top: .4em;
+    opacity: .9;
+}
+
+.stars {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.star {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding-bottom: 2px;
+    cursor: pointer;
+    font-size: 2em;
+    transition: .2s text-shadow, .2s color;
+}
+
+.star[ok-ok="ok"]:hover {
+    text-shadow: 0 0 10px #ffffff37;
+}
+
+.star[ok-ok="ok"][data-star="1"] {
+    transition: 0.2s scale;
+}
+
+.star[data-star="1"]:hover {
+    scale: 1.1;
+}
+
+.star[data-star] {
+    visibility: hidden;
+}
+
+.star[data-star="1"] {
+    visibility: visible;
+}
+
+.star[ok-ok="okie"]:hover, .star[ok-ok="okie"]:hover ~ .star[ok-ok="okie"] {
+    color: #ddd9;
+    scale: 1.1;
+    text-shadow: 0 0 20px #ffffff56 !important;
+}
+
+.star.oki {
+    color: #ddd9 !important;
+    scale: 1.1 !important;
+    text-shadow: 0 0 20px #ffffff56 !important;
+}
+
+.proceed {
+    position: absolute;
+    top: 20%;
+    right: 16px;
+    height: 60%;
+    aspect-ratio: 1.4 / 1;
+    z-index: 115;
+    display: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    display: none;
+    border-radius: 5px;
+    background: #064193;
+}
+
+.proceed svg {
+    width: 50%;
+    height: auto;
+    margin-right: calc(25% + 5px);
+    opacity: 0.7;
+    translate: 0px 0;
+    transition: 0.2s ease-out;
+}
+
+.proceed[active]:hover svg {
+    translate: 5px 0;
+    opacity: 1;
+}
