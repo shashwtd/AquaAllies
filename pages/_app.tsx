@@ -7,6 +7,7 @@ import Player from "@/components/player/Player";
 import Curtain from "@/components/curtain/Curtain";
 import Footer from "@/components/footer/Footer";
 import { MediaWidth } from "@/scripts/mediaQueries";
+import Feedback from "@/components/feedback/Feedback";
 
 export default function App({ Component, pageProps }: AppProps) {
   const lenisRef = React.useRef<Lenis | null>(null);
@@ -54,6 +55,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <div className="scrollBar" id="scroll"></div>
         <Component {...pageProps} />
         <Footer scrollTop={gotoTop}/>
+        <Feedback />
       </div>
     </React.StrictMode>
   );
