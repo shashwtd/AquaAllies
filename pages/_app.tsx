@@ -8,6 +8,7 @@ import Curtain from "@/components/curtain/Curtain";
 import Footer from "@/components/footer/Footer";
 import { MediaWidth } from "@/scripts/mediaQueries";
 import Feedback, { AskFeedback} from "@/components/feedback/Feedback";
+import { newVisitor } from "@/scripts/firebaseConfig";
 
 export default function App({ Component, pageProps }: AppProps) {
   const lenisRef = React.useRef<Lenis | null>(null);
@@ -35,9 +36,8 @@ export default function App({ Component, pageProps }: AppProps) {
       scroll!.style.setProperty("--scroll", `${scrollPerc}%`);
       MediaWidth(768) ? bg!.style.top = `0%` : bg!.style.top = `-${scrollPerc}%`;
     });
-
+    newVisitor();
     AskFeedback(0.1);
-    
   }, []);
 
   function gotoTop() {

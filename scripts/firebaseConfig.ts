@@ -15,81 +15,53 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 const db = getFirestore();
 
-interface GeoLocationData {
-  country: string | "Unknown";
-  region: string | "Unknown";
-  city: string | "Unknown";
-  lat: number | "Unknown";
-  lon: number | "Unknown";
-  timezone: string | "Unknown";
-  ip: string | "0.0.0.0";
+var geoData: any;
+var userAgent: any;
+var name: string = "Anonymous";
+var user: any;
+const startTime = Date.now();
+
+async function getGeoLocationData() {
+  const response = await fetch(
+    `https://api.ipgeolocation.io/ipgeo?apiKey=10b6cd3d0cf84c1aab80505ff8bd233f`
+  );
+  const data = await response.json();
+  return data;
 }
 
-async function getGeoLocationData(): Promise<GeoLocationData> {
-  const response = await fetch(`https://ip-api.com/json/?fields=61439`);
-  if (!response.ok) {
-    return {
-      country: "Unknown",
-      region: "Unknown",
-      city: "Unknown",
-      lat: "Unknown",
-      lon: "Unknown",
-      timezone: "Unknown",
-      ip: "",
-    };
-  }
-
-  const data = await response.json();
-
-  if (data.status === "fail") {
-    return {
-      country: "Unknown",
-      region: "Unknown",
-      city: "Unknown",
-      lat: "Unknown",
-      lon: "Unknown",
-      timezone: "Unknown",
-      ip: "",
-    };
-  }
-
-  const {
-    country,
-    regionName: region,
-    city,
-    lat,
-    lon,
-    timezone,
-    query: ip,
-  } = data;
-  return {
-    country,
-    region,
-    city,
-    lat,
-    lon,
-    timezone,
-    ip,
-  };
+function timeElapsed(): number {
+  return Math.round((Date.now() - startTime) / 1000);
 }
 
 const parser = new UAParser();
 export async function uploadRating(rating: number) {
-  const userAgent = parser.getResult();
-  const name = prompt("Enter your name: ");
-  const geoLocationData = await getGeoLocationData();
+  name = prompt("Enter your name: ") || "Anonymous";
   await addDoc(collection(db, "ratings"), {
     name: name,
     rating: rating,
-    timestamp: Date.now(),
-    userAgent: {
-      browser: userAgent.browser.name || "Unknown",
-      engine: userAgent.engine.name || "Unknown",
-      os: userAgent.os.name || "Unknown",
-      device: userAgent.device.type || "Unknown",
-      cpu: userAgent.cpu.architecture || "Unknown",
+    elapsedTime: timeElapsed(),
+    userRef: user,
+    time: {
+      timestamp: Date.now(),
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
     },
-    userData: geoLocationData,
   });
   console.log(`Rating added -> ${rating}★ by ${name}`);
+}
+
+export async function newVisitor() {
+  userAgent = parser.getResult();
+  geoData = await getGeoLocationData();
+  user = await addDoc(collection(db, "users"), {
+    time: {
+      timestamp: Date.now(),
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    },
+    browser: userAgent.browser.name || "Unknown",
+    os: userAgent.os.name || "Unknown",
+    device: userAgent.device.type || "Unknown",
+    geoData: geoData,
+  });
 }
